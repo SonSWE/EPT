@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "718908560976",
+    "firebase_url": "https://gymstrong-6c1fb-default-rtdb.firebaseio.com",
+    "project_id": "gymstrong-6c1fb",
+    "storage_bucket": "gymstrong-6c1fb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:718908560976:android:9f078e540f04e5b1c1e355",
+        "android_client_info": {
+          "package_name": "com.example.ept"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4bYH7tSGb7XAHjsgABKnq-2OwXAclEGE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:718908560976:android:d44303ee42d14cbec1e355",
+        "android_client_info": {
+          "package_name": "com.example.gymstrongapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4bYH7tSGb7XAHjsgABKnq-2OwXAclEGE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
