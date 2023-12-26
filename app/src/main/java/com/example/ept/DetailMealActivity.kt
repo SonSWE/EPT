@@ -23,6 +23,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
+
 class DetailMealActivity : AppCompatActivity() {
     private var recyclerView: RecyclerView? = null
     private var recyclerViewFoodAdd : RecyclerView? = null

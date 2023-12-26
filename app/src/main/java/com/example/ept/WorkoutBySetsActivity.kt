@@ -2,25 +2,19 @@ package com.example.ept
 
 import android.content.DialogInterface
 import android.os.Bundle
-import android.os.CountDownTimer
 import android.view.View
 import android.widget.FrameLayout
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
-import com.google.android.material.button.MaterialButton
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.FullscreenListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.options.IFramePlayerOptions
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-import java.util.Locale
 
-class WorckoutBySetsActivity : AppCompatActivity() {
+class WorkoutBySetsActivity : AppCompatActivity() {
     private var isDone = false
 
     private lateinit var youTubePlayer: YouTubePlayer
@@ -39,7 +33,7 @@ class WorckoutBySetsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_worckout_by_sets)
+        setContentView(R.layout.activity_workout_by_sets)
 
         //<editor-fold desc="youtubeView">
         onBackPressedDispatcher.addCallback(onBackPressedCallback)
@@ -82,7 +76,7 @@ class WorckoutBySetsActivity : AppCompatActivity() {
 
         youTubePlayerView.initialize(object : AbstractYouTubePlayerListener() {
             override fun onReady(youTubePlayer: YouTubePlayer) {
-                this@WorckoutBySetsActivity.youTubePlayer = youTubePlayer
+                this@WorkoutBySetsActivity.youTubePlayer = youTubePlayer
                 youTubePlayer.loadVideo("2FtpMWMADZw", 0f)
             }
         }, iFramePlayerOptions)

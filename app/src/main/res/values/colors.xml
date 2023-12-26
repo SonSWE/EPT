@@ -3,8 +3,12 @@
     <color name="colorPrimary">#FF000000</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="orange">#ED7B29</color>
-    <color name="gray">#F0F0F0</color>
+    <color name="orange">#E25E3E</color>
+    <color name="gray">#A3A3A3</color>
+    <color name="dark_gray">#A3A3A3</color>
+    <color name="light_gray">#DFDFDF</color>
+    <color name="blue">#07A3FB</color>
+    <color name="dark_blue">#0082CB</color>
 
 
     <!--MENU MEAL    -->
@@ -36,4 +40,6 @@
     <color name="grey">#A5A3A3</color>
     <color name="red">#D80101</color>
     <color name="dividerColor">#F5F5F5</color>
+
+
 </resources>
