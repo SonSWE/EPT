@@ -21,18 +21,18 @@ import com.google.firebase.database.ValueEventListener
 import java.text.NumberFormat
 
 
-class DetailMealAdapter(private val mListFood: List<Food>?) :
-    RecyclerView.Adapter<DetailMealAdapter.DetailFoodHolder>() {
+class DetailMealNightAdapter(private val mListFoodNight: List<Food>?) :
+    RecyclerView.Adapter<DetailMealNightAdapter.DetailFoodNightHolder>() {
 
     private val quantityMap = mutableMapOf<Int, Int>()
     private val databaseRef: DatabaseReference = FirebaseDatabase.getInstance().reference
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DetailFoodHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DetailFoodNightHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_food, parent, false)
-        return DetailFoodHolder(view)
+        return DetailFoodNightHolder(view)
     }
 
-    override fun onBindViewHolder(holder: DetailFoodHolder, position: Int) {
-        val food = mListFood!![position] ?: return
+    override fun onBindViewHolder(holder: DetailFoodNightHolder, position: Int) {
+        val food = mListFoodNight!![position] ?: return
         holder.tvNameFood.text = food.name_food
         holder.tvNumKcal.text = food.kcal_food.toString()
 
@@ -78,7 +78,7 @@ class DetailMealAdapter(private val mListFood: List<Food>?) :
 
     private fun addDataToFirebase(food: Food, id: Int, name: String, quantity: Int, totalKcal: Double) {
         // Bạn cần định nghĩa cấu trúc cơ sở dữ liệu Firebase và đường dẫn tương ứng
-        val mealRef = databaseRef.child("Meal_Morning") // Đường dẫn ví dụ
+        val mealRef = databaseRef.child("Meal_Night") // Đường dẫn ví dụ
         val imgFood = food.img_food
         // Tạo một nút con mới với một khóa duy nhất
         mealRef.orderByChild("name_food").equalTo(name).addListenerForSingleValueEvent(object :
@@ -117,10 +117,10 @@ class DetailMealAdapter(private val mListFood: List<Food>?) :
     }
 
     override fun getItemCount(): Int {
-        return mListFood?.size ?: 0
+        return mListFoodNight?.size ?: 0
     }
 
-    inner class DetailFoodHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class DetailFoodNightHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tvNameFood: TextView
         val tvNumKcal: TextView
         val amount: EditText
@@ -140,7 +140,7 @@ class DetailMealAdapter(private val mListFood: List<Food>?) :
         }
     }
 
-    private fun updateQuantityAndKcal(holder: DetailFoodHolder, position: Int, change: Int) {
+    private fun updateQuantityAndKcal(holder: DetailFoodNightHolder, position: Int, change: Int) {
         val currentQuantity = quantityMap[position] ?: 0
         var newQuantity = currentQuantity + change
 
@@ -156,7 +156,7 @@ class DetailMealAdapter(private val mListFood: List<Food>?) :
         holder.amount.setText(newQuantity.toString())
 
         // Tính toán tổng kcal mới và cập nhật TextView
-        val food = mListFood!![position]
+        val food = mListFoodNight!![position]
         val totalKcal = newQuantity * (food.kcal_food?.toDouble() ?: 0.0)
         val formattedKcal = formatKcal(totalKcal)
         holder.tvNumKcal.text = formattedKcal

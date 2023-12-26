@@ -1,96 +1,94 @@
 package com.example.ept
 
-
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ept.adapter.DetailMealAdapter
+import com.example.ept.adapter.DetailMealNightAdapter
 import com.example.ept.adapter.MeaStorageAdapter
+import com.example.ept.adapter.MeaStorageNightAdapter
 import com.example.ept.model.Food
+import com.example.ept.model.MealNightModel
 import com.example.ept.model.MealMorningModel
-
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
-class DetailMealActivity : AppCompatActivity() {
-    private var recyclerView: RecyclerView? = null
-    private var recyclerViewFoodAdd : RecyclerView? = null
-    private var mDetailMealAdapter: DetailMealAdapter? = null
-    private var mMealStorageAdapter: MeaStorageAdapter? = null
-    private var mListFood: MutableList<Food>? = null
-    private var mListStorage: MutableList<MealMorningModel>? = null
-
-    var name: String? = null
+class DetailMealNightActivity : AppCompatActivity() {
+    private var recyclerViewNight: RecyclerView? = null
+    private var recyclerViewFoodNightAdd: RecyclerView? = null
+    private var mDetailMealNightAdapter: DetailMealNightAdapter? = null
+    private var mMealStorageNightAdapter: MeaStorageNightAdapter? = null
+    private var mListFoodNight: MutableList<Food>? = null
+    private var mListStorageNight: MutableList<MealNightModel>? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detail_meal)
+        setContentView(R.layout.activity_detail_meal_night)
 
-        val bottomSheet = findViewById<FrameLayout>(R.id.sheet)
+        val bottomSheet = findViewById<FrameLayout>(R.id.sheetNight)
         val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
 
-// Thiết lập chiều cao tối thiểu (peek height) và trạng thái ban đầu
+        // Thiết lập chiều cao tối thiểu (peek height) và trạng thái ban đầu
         bottomSheetBehavior.peekHeight = 80
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
 
         // Khởi tạo UI và danh sách thực phẩm
         initUi()
         initUi_Storage()
+
         // Bắt sự kiện khi người dùng nhấn nút ImageView
-        val myImageView = findViewById<ImageView>(R.id.myImageView)
-        myImageView.setOnClickListener { v: View? ->
-            val intent = Intent(this@DetailMealActivity, MealMenuActivity::class.java)
+        val myImageViewNight = findViewById<ImageView>(R.id.myImageViewNight)
+        myImageViewNight.setOnClickListener { v: View? ->
+            val intent = Intent(this@DetailMealNightActivity, MealMenuActivity::class.java)
             startActivity(intent)
         }
-
         // Lấy danh sách thực phẩm từ cơ sở dữ liệu Firebase
-        listFoodDatabase
-       listFoodStorageDatabase
+        listFoodNightDatabase
+        listFoodStorageNightDatabase
     }
 
     private fun initUi() {
         // Khởi tạo RecyclerView và Adapter cho DetailMeal
-        val recyclerView: RecyclerView = findViewById(R.id.recyclerViewFood)
+        val recyclerViewNight: RecyclerView = findViewById(R.id.recyclerViewFoodNight)
         val linearLayoutManager = LinearLayoutManager(this)
-        recyclerView.layoutManager = linearLayoutManager
+        recyclerViewNight.layoutManager = linearLayoutManager
         val dividerItemDecoration = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
-        recyclerView.addItemDecoration(dividerItemDecoration)
-
+        recyclerViewNight.addItemDecoration(dividerItemDecoration)
 
 
         // Khởi tạo danh sách thực phẩm
-        mListFood = ArrayList()
-        mDetailMealAdapter = DetailMealAdapter(mListFood)
-        recyclerView.setAdapter(mDetailMealAdapter)
+        mListFoodNight = ArrayList()
+        mDetailMealNightAdapter = DetailMealNightAdapter(mListFoodNight)
+        recyclerViewNight.setAdapter(mDetailMealNightAdapter)
 
 
     }
 
-    private fun initUi_Storage(){
+    private fun initUi_Storage() {
         // Khởi tạo RecyclerView và Adapter cho DetailMeal
-        val recyclerViewFoodAdd: RecyclerView = findViewById(R.id.recyclerViewFoodAdd)
+        val recyclerViewFoodNightAdd: RecyclerView = findViewById(R.id.recyclerViewFoodAddNight)
         val linearLayoutManagerFoodAdd = LinearLayoutManager(this)
-        recyclerViewFoodAdd.layoutManager = linearLayoutManagerFoodAdd
-        val dividerItemDecorationFoodAdd = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
-        recyclerViewFoodAdd.addItemDecoration(dividerItemDecorationFoodAdd)
+        recyclerViewFoodNightAdd.layoutManager = linearLayoutManagerFoodAdd
+        val dividerItemDecorationFoodAdd =
+            DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
+        recyclerViewFoodNightAdd.addItemDecoration(dividerItemDecorationFoodAdd)
 
         // Khởi tạo danh sách thực phẩm add
-        mListStorage = ArrayList()
-        mMealStorageAdapter = MeaStorageAdapter(mListStorage, onDeleteClickListener)
-        recyclerViewFoodAdd.setAdapter(mMealStorageAdapter)
+        mListStorageNight = ArrayList()
+        mMealStorageNightAdapter = MeaStorageNightAdapter(mListStorageNight, onDeleteClickListener)
+        recyclerViewFoodNightAdd.setAdapter(mMealStorageNightAdapter)
     }
 
-    private val listFoodDatabase: Unit
+    private val listFoodNightDatabase: Unit
         private get() {
             // Kết nối đến cơ sở dữ liệu Firebase
             val database = FirebaseDatabase.getInstance()
@@ -100,7 +98,7 @@ class DetailMealActivity : AppCompatActivity() {
             myRef.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     // Xóa danh sách cũ trước khi cập nhật
-                    mListFood!!.clear()
+                    mListFoodNight!!.clear()
 
                     // Duyệt qua dữ liệu mới và thêm vào danh sách
                     for (dataSnapshot in snapshot.children) {
@@ -109,19 +107,19 @@ class DetailMealActivity : AppCompatActivity() {
                             food.img_food = dataSnapshot.child("img_food").getValue(
                                 String::class.java
                             )
-                            mListFood!!.add(food)
+                            mListFoodNight!!.add(food)
                         }
                     }
 
 
                     // Thông báo cho Adapter biết là dữ liệu đã thay đổi
-                    mDetailMealAdapter!!.notifyDataSetChanged()
+                    mDetailMealNightAdapter!!.notifyDataSetChanged()
                 }
 
                 override fun onCancelled(error: DatabaseError) {
                     // Xử lý khi có lỗi xảy ra
                     Toast.makeText(
-                        this@DetailMealActivity,
+                        this@DetailMealNightActivity,
                         "Lấy danh sách thực phẩm thất bại!",
                         Toast.LENGTH_SHORT
                     ).show()
@@ -129,43 +127,43 @@ class DetailMealActivity : AppCompatActivity() {
             })
         }
 
-    private val listFoodStorageDatabase: Unit
+    private val listFoodStorageNightDatabase: Unit
         private get() {
             // Kết nối đến cơ sở dữ liệu Firebase
             val database = FirebaseDatabase.getInstance()
-            val myRef = database.reference.child("Meal_Morning")
+            val myRef = database.reference.child("Meal_Night")
 
             // Lắng nghe sự thay đổi trong dữ liệu
             myRef.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     // Xóa danh sách cũ trước khi cập nhật
-                    mListStorage!!.clear()
+                    mListStorageNight!!.clear()
 
                     // Duyệt qua dữ liệu mới và thêm vào danh sách
                     for (dataSnapshot in snapshot.children) {
-                        val foodStorage = dataSnapshot.getValue(MealMorningModel::class.java)
+                        val foodStorage = dataSnapshot.getValue(MealNightModel::class.java)
                         if (foodStorage != null) {
 //                            foodStorage.img_food = dataSnapshot.child("img_food").getValue(String::class.java) ?: ""
-                            mListStorage!!.add(foodStorage)
+                            mListStorageNight!!.add(foodStorage)
                         }
                     }
 
 
                     // Thông báo cho Adapter biết là dữ liệu đã thay đổi
-                    mMealStorageAdapter!!.notifyDataSetChanged()
+                    mMealStorageNightAdapter!!.notifyDataSetChanged()
                 }
 
                 override fun onCancelled(error: DatabaseError) {
                     // Xử lý khi có lỗi xảy ra
                     Toast.makeText(
-                        this@DetailMealActivity,
+                        this@DetailMealNightActivity,
                         "Lấy danh sách thực phẩm thất bại!",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
             })
         }
-    private val onDeleteClickListener = object : MeaStorageAdapter.OnDeleteClickListener {
+    private val onDeleteClickListener = object : MeaStorageNightAdapter.OnDeleteClickListener {
         override fun onDeleteClick(id: String) {
             deleteDataInFirebase(id)
         }
@@ -173,7 +171,7 @@ class DetailMealActivity : AppCompatActivity() {
 
     private fun deleteDataInFirebase(id: String) {
         val database = FirebaseDatabase.getInstance()
-        val myRef = database.reference.child("Meal_Morning")
+        val myRef = database.reference.child("Meal_Night")
 
         // Thực hiện một truy vấn để tìm nút con có id tương ứng
         val query = myRef.orderByChild("id").equalTo(id.toDouble())
@@ -185,17 +183,17 @@ class DetailMealActivity : AppCompatActivity() {
                     dataSnapshot.ref.removeValue()
                         ?.addOnSuccessListener {
                             // Xóa item trên giao diện
-                            mListStorage?.removeAll { it.id.toString() == id }
-                            mMealStorageAdapter?.notifyDataSetChanged()
+                            mListStorageNight?.removeAll { it.id.toString() == id }
+                            mMealStorageNightAdapter?.notifyDataSetChanged()
 
                             Toast.makeText(
-                                this@DetailMealActivity,
+                                this@DetailMealNightActivity,
                                 "Xóa thành công",
                                 Toast.LENGTH_SHORT
                             ).show()
                         }?.addOnFailureListener {
                             Toast.makeText(
-                                this@DetailMealActivity,
+                                this@DetailMealNightActivity,
                                 "Xóa thất bại",
                                 Toast.LENGTH_SHORT
                             ).show()
@@ -206,7 +204,7 @@ class DetailMealActivity : AppCompatActivity() {
             override fun onCancelled(error: DatabaseError) {
                 // Xử lý khi có lỗi xảy ra trong quá trình đọc dữ liệu
                 Toast.makeText(
-                    this@DetailMealActivity,
+                    this@DetailMealNightActivity,
                     "Không tìm thấy mục để xóa",
                     Toast.LENGTH_SHORT
                 ).show()

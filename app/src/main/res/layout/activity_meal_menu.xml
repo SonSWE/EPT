@@ -9,12 +9,13 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+       >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:orientation="vertical"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -25,7 +26,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true">
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="10dp">
 
                 <TextView
 
@@ -33,10 +35,9 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
-                    android:fontFamily="@font/family"
                     android:text="Thực đơn hôm nay"
                     android:textColor="@color/black"
-                    android:textStyle="bold"></TextView>
+                    android:textStyle="bold"/>
 
                 <ImageView
 
@@ -66,7 +67,8 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:background="@drawable/bg_dd"
-                    android:clipToOutline="true">
+                    android:clipToOutline="true"
+                    >
 
                     <LinearLayout
 
@@ -87,7 +89,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="Hôm nay,"
                                 android:textColor="@color/white"
-                                android:textSize="20dp"
+                                android:textSize="25dp"
                                 android:textStyle="bold">
 
                             </TextView>
@@ -95,13 +97,14 @@
                             <TextView
                                 android:layout_width="220dp"
                                 android:layout_height="30dp"
-                                android:fontFamily="@font/family"
-                                android:gravity="center"
 
-                                android:paddingLeft="5dp"
+                                android:gravity="center"
+                                android:layout_marginTop="5dp"
+
+                                android:paddingLeft="90dp"
                                 android:text="20/11/2023"
                                 android:textColor="@color/white"
-                                android:textSize="10dp"
+                                android:textSize="15sp"
 
                                 android:textStyle="bold">
 
@@ -135,7 +138,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="Chào mừng, Ninhisme"
                                 android:textColor="@color/white"
-                                android:textSize="12dp"
+                                android:textSize="14sp"
                                 android:textStyle="bold">
 
                             </TextView>
@@ -146,7 +149,7 @@
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="30dp"
+                            android:layout_marginTop="15dp"
                             android:layout_marginRight="60dp">
 
 
@@ -156,7 +159,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="Cân nặng: "
                                 android:textColor="@color/white"
-                                android:textSize="12dp"
+                                android:textSize="14sp"
                                 android:textStyle="bold">
 
                             </TextView>
@@ -171,7 +174,7 @@
                                 android:layout_toRightOf="@+id/ttc1"
                                 android:text="80kg% "
                                 android:textColor="@color/white"
-                                android:textSize="12dp"
+                                android:textSize="14sp"
                                 android:textStyle="bold"></TextView>
 
                         </RelativeLayout>
@@ -189,7 +192,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="Tỉ lệ lượng mỡ cơ thể: "
                                 android:textColor="@color/white"
-                                android:textSize="12dp"
+                                android:textSize="14sp"
                                 android:textStyle="bold">
 
                             </TextView>
@@ -200,11 +203,10 @@
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
                                 android:layout_marginLeft="5dp"
-
                                 android:layout_toRightOf="@+id/ttc"
                                 android:text="28.2% "
                                 android:textColor="@color/white"
-                                android:textSize="12dp"
+                                android:textSize="14sp"
                                 android:textStyle="bold">
 
                             </TextView>
@@ -223,7 +225,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="Khối lượng cơ: "
                                 android:textColor="@color/white"
-                                android:textSize="12dp"
+                                android:textSize="14sp"
                                 android:textStyle="bold">
 
                             </TextView>
@@ -238,7 +240,7 @@
                                 android:layout_toRightOf="@+id/ttc3"
                                 android:text="28.2% "
                                 android:textColor="@color/white"
-                                android:textSize="12dp"
+                                android:textSize="14sp"
                                 android:textStyle="bold">
 
                             </TextView>
@@ -252,7 +254,7 @@
                                 android:paddingHorizontal="3dp"
                                 android:text="Total:"
                                 android:textColor="@color/white"
-                                android:textSize="12dp"
+                                android:textSize="14sp"
                                 android:textStyle="bold">
 
 
@@ -269,7 +271,7 @@
                                 android:paddingHorizontal="5dp"
                                 android:text="500g"
                                 android:textColor="@color/white"
-                                android:textSize="12dp"
+                                android:textSize="14sp"
                                 android:textStyle="bold">
 
 
@@ -300,7 +302,7 @@
                     android:layout_height="wrap_content"
                     android:text="Uống nước"
                     android:textColor="@color/black"
-                    android:textSize="12dp"
+                    android:textSize="16dp"
                     android:textStyle="bold"></TextView>
 
                 <androidx.cardview.widget.CardView
@@ -339,20 +341,20 @@
                                 android:layout_height="wrap_content"
                                 android:text="2250 ml"
                                 android:textColor="@color/red_100"
-                                android:textSize="17dp"
+                                android:textSize="20dp"
                                 android:textStyle="bold"
 
                                 />
 
                             <TextView
-                                android:id="@+id/textNext"
+
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
                                 android:layout_marginBottom="5dp"
                                 android:layout_weight="1"
                                 android:text="Mục tiêu uống nước hàng ngày"
                                 android:textColor="@color/black"
-                                android:textSize="10dp"
+                                android:textSize="13sp"
                                 android:textStyle="bold" />
 
                             <View
@@ -375,18 +377,19 @@
                                     android:layout_alignParentEnd="true"
                                     android:layout_centerVertical="true"
 
-                                    app:srcCompat="@drawable/baseline_access_time_24">
+                                    app:srcCompat="@drawable/baseline_access_time_24"/>
 
-                                </ImageView>
+
 
                                 <TextView
+                                    android:id="@+id/textNext"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="5dp"
                                     android:layout_marginTop="2dp"
                                     android:text="Lần cuối uống:"
                                     android:textColor="@color/black"
-                                    android:textSize="11dp"
+                                    android:textSize="14sp"
                                     android:textStyle="bold" />
 
                                 <TextView
@@ -396,7 +399,7 @@
                                     android:layout_marginTop="2dp"
                                     android:text="21:17"
                                     android:textColor="@color/black"
-                                    android:textSize="11dp"
+                                    android:textSize="14sp"
                                     android:textStyle="bold" />
 
 
@@ -427,7 +430,7 @@
                                     android:layout_marginTop="2dp"
                                     android:text="Disable notification"
                                     android:textColor="@color/yellow_100"
-                                    android:textSize="11dp"
+                                    android:textSize="14sp"
                                     android:textStyle="bold" />
 
                                 <TextView
@@ -437,7 +440,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:layout_marginTop="2dp"
                                     android:textColor="@color/yellow_100"
-                                    android:textSize="11dp"
+                                    android:textSize="14sp"
                                     android:textStyle="bold" />
 
 
@@ -457,8 +460,8 @@
                     android:layout_height="wrap_content"
                     android:text="Thực đơn các bữa ăn"
                     android:textColor="@color/black"
-                    android:textSize="12dp"
-                    android:textStyle="bold"></TextView>
+                    android:textSize="16dp"
+                    android:textStyle="bold"/>
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
@@ -470,8 +473,8 @@
 
                     <RelativeLayout
 
-                        android:layout_width="355dp"
-                        android:layout_height="134dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
                         android:background="@color/grey_100"
@@ -503,13 +506,13 @@
                                     android:layout_marginTop="2dp"
                                     android:text="Bữa sáng: "
                                     android:textColor="@color/black"
-                                    android:textSize="11dp"
+                                    android:textSize="16dp"
                                     android:textStyle="bold" />
 
                                 <ImageView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="60dp"
+                                    android:layout_marginLeft="80dp"
                                     app:srcCompat="@drawable/baseline_access_alarm_24">
 
                                 </ImageView>
@@ -518,11 +521,11 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="80dp"
+                                    android:layout_marginLeft="100dp"
                                     android:layout_marginTop="2dp"
                                     android:text="7:00"
                                     android:textColor="@color/grey_200"
-                                    android:textSize="8dp"
+                                    android:textSize="13sp"
                                     android:textStyle="bold" />
 
                                 <TextView
@@ -534,93 +537,30 @@
                                     android:layout_marginLeft="5dp"
                                     android:layout_marginTop="2dp"
                                     android:text="Chi tiết bữa ăn"
-                                    android:textColor="@color/black"
-                                    android:textSize="11dp"
+                                    android:textColor="@color/green"
+                                    android:textSize="13sp"
                                     android:textStyle="bold" />
                             </RelativeLayout>
 
-                            <RelativeLayout
+                            <ScrollView
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
+                                android:layout_height="wrap_content"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                >
 
-                                <TextView
-                                    android:layout_width="wrap_content"
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/recyclerViewFoodMor"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="5dp"
-                                    android:gravity="top"
-                                    android:text="."
-                                    android:textColor="@color/blue_200"
-                                    android:textSize="20dp"
-                                    android:textStyle="bold">
-
-
-                                </TextView>
-
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="15dp"
                                     android:layout_marginTop="10dp"
-                                    android:text="1 quả chuối "
-                                    android:textColor="@color/black"
-                                    android:textSize="11dp"
-                                    android:textStyle="bold" />
+                                    app:layout_constraintStart_toStartOf="parent"
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignParentEnd="true"
-                                    android:layout_centerVertical="true"
-                                    android:layout_marginLeft="5dp"
-                                    android:layout_marginTop="20dp"
-                                    android:text="90 kcal"
-                                    android:textColor="@color/black"
-                                    android:textSize="11dp"
-                                    android:textStyle="bold" />
-                            </RelativeLayout>
+                                    app:layout_constraintEnd_toEndOf="parent"/>
 
-                            <RelativeLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
+                            </ScrollView>
 
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="5dp"
-                                    android:gravity="top"
-                                    android:text="."
-                                    android:textColor="@color/blue_200"
-                                    android:textSize="20dp"
-                                    android:textStyle="bold">
-
-
-                                </TextView>
-
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="15dp"
-                                    android:layout_marginTop="10dp"
-                                    android:text="1 bánh mì trứng "
-                                    android:textColor="@color/black"
-                                    android:textSize="11dp"
-                                    android:textStyle="bold" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignParentEnd="true"
-                                    android:layout_centerVertical="true"
-                                    android:layout_marginLeft="5dp"
-                                    android:layout_marginTop="20dp"
-                                    android:text="200 kcal"
-                                    android:textColor="@color/black"
-                                    android:textSize="11dp"
-                                    android:textStyle="bold" />
-                            </RelativeLayout>
 
 
                             <View
@@ -640,12 +580,29 @@
                                     android:id="@+id/ttc5"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="220dp"
+                                    android:layout_marginLeft="180dp"
 
                                     android:paddingHorizontal="3dp"
                                     android:text="Total:"
                                     android:textColor="@color/black"
-                                    android:textSize="12dp"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold">
+
+
+                                </TextView>
+
+                                <TextView
+                                    android:id="@+id/totalFoodMor"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_toRightOf="@+id/ttc5"
+                                    android:gravity="start"
+                                    android:paddingHorizontal="5dp"
+
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
                                     android:textStyle="bold">
 
 
@@ -658,11 +615,13 @@
 
                                     android:layout_alignParentEnd="true"
                                     android:layout_toRightOf="@+id/ttc5"
-                                    android:gravity="start"
-                                    android:paddingHorizontal="5dp"
-                                    android:text="500g"
-                                    android:textColor="@color/black"
-                                    android:textSize="12dp"
+                                    android:gravity="end"
+                                    android:paddingHorizontal="10dp"
+                                    android:layout_marginTop="3dp"
+                                    android:layout_marginLeft="8dp"
+                                    android:text="Kcal"
+                                    android:textColor="@color/grey"
+                                    android:textSize="10sp"
                                     android:textStyle="bold">
 
 
@@ -689,8 +648,8 @@
 
                     <RelativeLayout
 
-                        android:layout_width="355dp"
-                        android:layout_height="134dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
                         android:background="@color/grey_100"
@@ -720,15 +679,15 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="5dp"
                                     android:layout_marginTop="2dp"
-                                    android:text="Bữa sáng: "
+                                    android:text="Bữa trưa: "
                                     android:textColor="@color/black"
-                                    android:textSize="11dp"
+                                    android:textSize="16dp"
                                     android:textStyle="bold" />
 
                                 <ImageView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="60dp"
+                                    android:layout_marginLeft="80dp"
                                     app:srcCompat="@drawable/baseline_access_alarm_24">
 
                                 </ImageView>
@@ -737,14 +696,15 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="80dp"
+                                    android:layout_marginLeft="100dp"
                                     android:layout_marginTop="2dp"
-                                    android:text="7:00"
+                                    android:text="11:30"
                                     android:textColor="@color/grey_200"
-                                    android:textSize="8dp"
+                                    android:textSize="13sp"
                                     android:textStyle="bold" />
 
                                 <TextView
+                                    android:id="@+id/detailMealLunch"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentEnd="true"
@@ -752,93 +712,30 @@
                                     android:layout_marginLeft="5dp"
                                     android:layout_marginTop="2dp"
                                     android:text="Chi tiết bữa ăn"
-                                    android:textColor="@color/black"
-                                    android:textSize="11dp"
+                                    android:textColor="@color/green"
+                                    android:textSize="13sp"
                                     android:textStyle="bold" />
                             </RelativeLayout>
 
-                            <RelativeLayout
+                            <ScrollView
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
+                                android:layout_height="wrap_content"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                >
 
-                                <TextView
-                                    android:layout_width="wrap_content"
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/recyclerViewFoodLun"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="5dp"
-                                    android:gravity="top"
-                                    android:text="."
-                                    android:textColor="@color/blue_200"
-                                    android:textSize="20dp"
-                                    android:textStyle="bold">
-
-
-                                </TextView>
-
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="15dp"
                                     android:layout_marginTop="10dp"
-                                    android:text="1 quả chuối "
-                                    android:textColor="@color/black"
-                                    android:textSize="11dp"
-                                    android:textStyle="bold" />
+                                    app:layout_constraintStart_toStartOf="parent"
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignParentEnd="true"
-                                    android:layout_centerVertical="true"
-                                    android:layout_marginLeft="5dp"
-                                    android:layout_marginTop="20dp"
-                                    android:text="90 kcal"
-                                    android:textColor="@color/black"
-                                    android:textSize="11dp"
-                                    android:textStyle="bold" />
-                            </RelativeLayout>
+                                    app:layout_constraintEnd_toEndOf="parent"/>
 
-                            <RelativeLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
+                            </ScrollView>
 
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="5dp"
-                                    android:gravity="top"
-                                    android:text="."
-                                    android:textColor="@color/blue_200"
-                                    android:textSize="20dp"
-                                    android:textStyle="bold">
-
-
-                                </TextView>
-
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="15dp"
-                                    android:layout_marginTop="10dp"
-                                    android:text="1 bánh mì trứng "
-                                    android:textColor="@color/black"
-                                    android:textSize="11dp"
-                                    android:textStyle="bold" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignParentEnd="true"
-                                    android:layout_centerVertical="true"
-                                    android:layout_marginLeft="5dp"
-                                    android:layout_marginTop="20dp"
-                                    android:text="200 kcal"
-                                    android:textColor="@color/black"
-                                    android:textSize="11dp"
-                                    android:textStyle="bold" />
-                            </RelativeLayout>
 
 
                             <View
@@ -855,15 +752,32 @@
 
 
                                 <TextView
-                                    android:id="@+id/ttc6"
+                                    android:id="@+id/ttc5Lunch"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="220dp"
+                                    android:layout_marginLeft="180dp"
 
                                     android:paddingHorizontal="3dp"
                                     android:text="Total:"
                                     android:textColor="@color/black"
-                                    android:textSize="12dp"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold">
+
+
+                                </TextView>
+
+                                <TextView
+                                    android:id="@+id/totalFoodLunch"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_toRightOf="@+id/ttc5Lunch"
+                                    android:gravity="start"
+                                    android:paddingHorizontal="5dp"
+
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
                                     android:textStyle="bold">
 
 
@@ -875,12 +789,14 @@
                                     android:layout_height="wrap_content"
 
                                     android:layout_alignParentEnd="true"
-                                    android:layout_toRightOf="@+id/ttc6"
-                                    android:gravity="start"
-                                    android:paddingHorizontal="5dp"
-                                    android:text="500g"
-                                    android:textColor="@color/black"
-                                    android:textSize="12dp"
+                                    android:layout_toRightOf="@+id/ttc5Lunch"
+                                    android:gravity="end"
+                                    android:paddingHorizontal="10dp"
+                                    android:layout_marginTop="3dp"
+                                    android:layout_marginLeft="8dp"
+                                    android:text="Kcal"
+                                    android:textColor="@color/grey"
+                                    android:textSize="10sp"
                                     android:textStyle="bold">
 
 
@@ -900,7 +816,6 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="25dp"
                     android:layout_gravity="center"
                     app:cardCornerRadius="5dp"
                     app:cardElevation="5dp"
@@ -908,8 +823,8 @@
 
                     <RelativeLayout
 
-                        android:layout_width="355dp"
-                        android:layout_height="134dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
                         android:background="@color/grey_100"
@@ -939,15 +854,15 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="5dp"
                                     android:layout_marginTop="2dp"
-                                    android:text="Bữa sáng: "
+                                    android:text="Bữa tối: "
                                     android:textColor="@color/black"
-                                    android:textSize="11dp"
+                                    android:textSize="16dp"
                                     android:textStyle="bold" />
 
                                 <ImageView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="60dp"
+                                    android:layout_marginLeft="80dp"
                                     app:srcCompat="@drawable/baseline_access_alarm_24">
 
                                 </ImageView>
@@ -956,14 +871,15 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="80dp"
+                                    android:layout_marginLeft="100dp"
                                     android:layout_marginTop="2dp"
-                                    android:text="7:00"
+                                    android:text="19:00"
                                     android:textColor="@color/grey_200"
-                                    android:textSize="8dp"
+                                    android:textSize="13sp"
                                     android:textStyle="bold" />
 
                                 <TextView
+                                    android:id="@+id/detailMealNight"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentEnd="true"
@@ -971,93 +887,30 @@
                                     android:layout_marginLeft="5dp"
                                     android:layout_marginTop="2dp"
                                     android:text="Chi tiết bữa ăn"
-                                    android:textColor="@color/black"
-                                    android:textSize="11dp"
+                                    android:textColor="@color/green"
+                                    android:textSize="13sp"
                                     android:textStyle="bold" />
                             </RelativeLayout>
 
-                            <RelativeLayout
+                            <ScrollView
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
+                                android:layout_height="wrap_content"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                >
 
-                                <TextView
-                                    android:layout_width="wrap_content"
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/recyclerViewFoodNight"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="5dp"
-                                    android:gravity="top"
-                                    android:text="."
-                                    android:textColor="@color/blue_200"
-                                    android:textSize="20dp"
-                                    android:textStyle="bold">
-
-
-                                </TextView>
-
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="15dp"
                                     android:layout_marginTop="10dp"
-                                    android:text="1 quả chuối "
-                                    android:textColor="@color/black"
-                                    android:textSize="11dp"
-                                    android:textStyle="bold" />
+                                    app:layout_constraintStart_toStartOf="parent"
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignParentEnd="true"
-                                    android:layout_centerVertical="true"
-                                    android:layout_marginLeft="5dp"
-                                    android:layout_marginTop="20dp"
-                                    android:text="90 kcal"
-                                    android:textColor="@color/black"
-                                    android:textSize="11dp"
-                                    android:textStyle="bold" />
-                            </RelativeLayout>
+                                    app:layout_constraintEnd_toEndOf="parent"/>
 
-                            <RelativeLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
+                            </ScrollView>
 
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="5dp"
-                                    android:gravity="top"
-                                    android:text="."
-                                    android:textColor="@color/blue_200"
-                                    android:textSize="20dp"
-                                    android:textStyle="bold">
-
-
-                                </TextView>
-
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="15dp"
-                                    android:layout_marginTop="10dp"
-                                    android:text="1 bánh mì trứng "
-                                    android:textColor="@color/black"
-                                    android:textSize="11dp"
-                                    android:textStyle="bold" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignParentEnd="true"
-                                    android:layout_centerVertical="true"
-                                    android:layout_marginLeft="5dp"
-                                    android:layout_marginTop="20dp"
-                                    android:text="200 kcal"
-                                    android:textColor="@color/black"
-                                    android:textSize="11dp"
-                                    android:textStyle="bold" />
-                            </RelativeLayout>
 
 
                             <View
@@ -1074,15 +927,32 @@
 
 
                                 <TextView
-                                    android:id="@+id/ttc7"
+                                    android:id="@+id/ttc5Night"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="220dp"
+                                    android:layout_marginLeft="180dp"
 
                                     android:paddingHorizontal="3dp"
                                     android:text="Total:"
                                     android:textColor="@color/black"
-                                    android:textSize="12dp"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold">
+
+
+                                </TextView>
+
+                                <TextView
+                                    android:id="@+id/totalFoodNight"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_toRightOf="@+id/ttc5Night"
+                                    android:gravity="start"
+                                    android:paddingHorizontal="5dp"
+
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
                                     android:textStyle="bold">
 
 
@@ -1094,12 +964,14 @@
                                     android:layout_height="wrap_content"
 
                                     android:layout_alignParentEnd="true"
-                                    android:layout_toRightOf="@+id/ttc7"
-                                    android:gravity="start"
-                                    android:paddingHorizontal="5dp"
-                                    android:text="500g"
-                                    android:textColor="@color/black"
-                                    android:textSize="12dp"
+                                    android:layout_toRightOf="@+id/ttc5Night"
+                                    android:gravity="end"
+                                    android:paddingHorizontal="10dp"
+                                    android:layout_marginTop="3dp"
+                                    android:layout_marginLeft="8dp"
+                                    android:text="Kcal"
+                                    android:textColor="@color/grey"
+                                    android:textSize="10sp"
                                     android:textStyle="bold">
 
 
@@ -1115,6 +987,7 @@
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
+
 
 
             </LinearLayout>

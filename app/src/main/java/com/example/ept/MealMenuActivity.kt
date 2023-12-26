@@ -10,13 +10,43 @@ import android.content.IntentFilter
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.ept.adapter.DetailMealAdapter
+import com.example.ept.adapter.MeaStorageAdapter
+import com.example.ept.adapter.MealMenuAdapter
+import com.example.ept.adapter.MealMenuLunchAdapter
+import com.example.ept.adapter.MealMenuNightAdapter
 import com.example.ept.model.AlarmReceiver
+import com.example.ept.model.Food
+import com.example.ept.model.MealLunchModel
+import com.example.ept.model.MealMorningModel
+import com.example.ept.model.MealNightModel
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import java.util.Calendar
 import java.util.Locale
+import kotlin.math.log
 
 class MealMenuActivity : AppCompatActivity() {
+
+
+
+    private var mMealMenuAdapter: MealMenuAdapter? = null
+    private var mListFoodMor: MutableList<MealMorningModel>? = mutableListOf()
+
+    private var mMealMenuLunchAdapter: MealMenuLunchAdapter? = null
+    private var mListFoodLun: MutableList<MealLunchModel>? = mutableListOf()
+
+    private var mMealMenuNightAdapter: MealMenuNightAdapter? = null
+    private var mListFoodNNight: MutableList<MealNightModel>? = mutableListOf()
 
     var notificationReceiver: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
@@ -29,6 +59,9 @@ class MealMenuActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_meal_menu)
+        initUi()
+        initUiLunch()
+        initUiNight()
 
         val intentFilter = IntentFilter("NOTIFICATION_SHOWN")
         registerReceiver(notificationReceiver, intentFilter)
@@ -51,13 +84,197 @@ class MealMenuActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val DetailMeadLunch = findViewById<TextView>(R.id.detailMealLunch)
+        DetailMeadLunch.setOnClickListener { v: View? ->
+            // Tạo Intent để chuyển từ MainActivity sang một Activity khác (ActivityB)
+            val intent = Intent(this@MealMenuActivity, DetailMealLunchActivity::class.java)
+
+            // Bắt đầu hoạt động mới
+            startActivity(intent)
+        }
+
+        val DetailMeadNight = findViewById<TextView>(R.id.detailMealNight)
+        DetailMeadNight.setOnClickListener { v: View? ->
+            // Tạo Intent để chuyển từ MainActivity sang một Activity khác (ActivityB)
+            val intent = Intent(this@MealMenuActivity, DetailMealNightActivity::class.java)
+
+            // Bắt đầu hoạt động mới
+            startActivity(intent)
+        }
+
 
         // Lắng nghe sự kiện khi nhấp vào TextView "Disable notification"
         val notificationDis = findViewById<TextView>(R.id.notificationDis)
         notificationDis.setOnClickListener { // Hiển thị hộp thoại chọn thời gian
             showTimePickerDialog()
         }
+
+        listFoodMorDatabase
+        listFoodLunDatabase
+        listFoodNightDatabase
+
+
     }
+
+    private fun initUi() {
+        // Khởi tạo RecyclerView và Adapter cho DetailMeal
+        val recyclerViewFoodMor: RecyclerView = findViewById(R.id.recyclerViewFoodMor)
+        val linearLayoutManager = LinearLayoutManager(this)
+        recyclerViewFoodMor.layoutManager = linearLayoutManager
+
+        // Khởi tạo danh sách thực phẩm
+        mListFoodMor = ArrayList()
+        mMealMenuAdapter = MealMenuAdapter(mListFoodMor)
+        recyclerViewFoodMor.adapter=mMealMenuAdapter
+
+
+    }
+
+    private fun initUiLunch() {
+        // Khởi tạo RecyclerView và Adapter cho DetailMeal
+        val recyclerViewFoodLun: RecyclerView = findViewById(R.id.recyclerViewFoodLun)
+        val linearLayoutManager = LinearLayoutManager(this)
+        recyclerViewFoodLun.layoutManager = linearLayoutManager
+
+        // Khởi tạo danh sách thực phẩm
+        mListFoodLun = ArrayList()
+        mMealMenuLunchAdapter = MealMenuLunchAdapter(mListFoodLun)
+        recyclerViewFoodLun.adapter=mMealMenuLunchAdapter
+
+
+    }
+
+    private fun initUiNight() {
+        // Khởi tạo RecyclerView và Adapter cho DetailMeal
+        val recyclerViewFoodNight: RecyclerView = findViewById(R.id.recyclerViewFoodNight)
+        val linearLayoutManager = LinearLayoutManager(this)
+        recyclerViewFoodNight.layoutManager = linearLayoutManager
+
+        // Khởi tạo danh sách thực phẩm
+        mListFoodNNight = ArrayList()
+        mMealMenuNightAdapter = MealMenuNightAdapter(mListFoodNNight)
+        recyclerViewFoodNight.adapter=mMealMenuNightAdapter
+
+
+    }
+
+    private val listFoodMorDatabase: Unit
+        private get() {
+            // Kết nối đến cơ sở dữ liệu Firebase
+            val database = FirebaseDatabase.getInstance()
+            val myRef = database.reference.child("Meal_Morning")
+
+            // Lắng nghe sự thay đổi trong dữ liệu
+            myRef.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot != null && snapshot.exists()) {
+                        mListFoodMor!!.clear()
+
+                        for (dataSnapshot in snapshot.children) {
+                            val foodMor = dataSnapshot.getValue(MealMorningModel::class.java)
+                            if (foodMor != null) {
+                                mListFoodMor!!.add(foodMor)
+                            }
+                        }
+
+                        mMealMenuAdapter?.notifyDataSetChanged()
+
+                        // Cập nhật tổng Kcal sau khi cập nhật dữ liệu
+                        val totalFoodMorTextView = findViewById<TextView>(R.id.totalFoodMor)
+                        totalFoodMorTextView.text = "${mMealMenuAdapter!!.calculateTotalKcal()}"
+                        Log.d("MealMenuActivity", "Dữ liệu: ${mListFoodMor.toString()}")
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    // Xử lý khi có lỗi xảy ra
+                    Toast.makeText(
+                        this@MealMenuActivity,
+                        "Lấy danh sách thực phẩm thất bại!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            })
+        }
+
+    private val listFoodLunDatabase: Unit
+        private get() {
+            // Kết nối đến cơ sở dữ liệu Firebase
+            val database = FirebaseDatabase.getInstance()
+            val myRef = database.reference.child("Meal_Lunch")
+
+            // Lắng nghe sự thay đổi trong dữ liệu
+            myRef.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot != null && snapshot.exists()) {
+                        mListFoodLun!!.clear()
+
+                        for (dataSnapshot in snapshot.children) {
+                            val foodMor = dataSnapshot.getValue(MealLunchModel::class.java)
+                            if (foodMor != null) {
+                                mListFoodLun!!.add(foodMor)
+                            }
+                        }
+
+                        mMealMenuLunchAdapter?.notifyDataSetChanged()
+
+                        // Cập nhật tổng Kcal sau khi cập nhật dữ liệu
+                        val totalFoodLunTextView = findViewById<TextView>(R.id.totalFoodLunch)
+                        totalFoodLunTextView.text = "${mMealMenuLunchAdapter!!.calculateTotalKcal()}"
+
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    // Xử lý khi có lỗi xảy ra
+                    Toast.makeText(
+                        this@MealMenuActivity,
+                        "Lấy danh sách thực phẩm thất bại!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            })
+        }
+
+    private val listFoodNightDatabase: Unit
+        private get() {
+            // Kết nối đến cơ sở dữ liệu Firebase
+            val database = FirebaseDatabase.getInstance()
+            val myRef = database.reference.child("Meal_Night")
+
+            // Lắng nghe sự thay đổi trong dữ liệu
+            myRef.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot != null && snapshot.exists()) {
+                        mListFoodNNight!!.clear()
+
+                        for (dataSnapshot in snapshot.children) {
+                            val foodMor = dataSnapshot.getValue(MealNightModel::class.java)
+                            if (foodMor != null) {
+                                mListFoodNNight!!.add(foodMor)
+                            }
+                        }
+
+                        mMealMenuNightAdapter?.notifyDataSetChanged()
+
+                        // Cập nhật tổng Kcal sau khi cập nhật dữ liệu
+                        val totalFoodLunTextView = findViewById<TextView>(R.id.totalFoodNight)
+                        totalFoodLunTextView.text = "${mMealMenuNightAdapter!!.calculateTotalKcal()}"
+
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    // Xử lý khi có lỗi xảy ra
+                    Toast.makeText(
+                        this@MealMenuActivity,
+                        "Lấy danh sách thực phẩm thất bại!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            })
+        }
+
 
     override fun onDestroy() {
         super.onDestroy()
