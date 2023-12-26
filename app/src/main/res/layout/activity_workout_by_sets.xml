@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WorkoutByMinActivity">
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".WorkoutBySetsActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -24,6 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
+
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -38,21 +41,119 @@
                     android:layout_marginBottom="10dp"
                     android:paddingTop="5dp"
                     android:paddingBottom="5dp"
-                    android:text="Trống đẩy cao tay"
+                    android:text="Dumble bench press"
                     android:textAlignment="center"
                     android:textSize="20dp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/tvClockDown"
+                    android:id="@+id/tvName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:text="00:00"
+                    android:text="4 sets x 12 reps"
                     android:textAlignment="center"
-                    android:textSize="34dp"
+                    android:textSize="30dp"
                     android:textStyle="bold" />
 
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+
+                <com.google.android.flexbox.FlexboxLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:alignContent="center"
+                    app:alignItems="center"
+                    app:flexDirection="row"
+                    app:flexWrap="nowrap">
+
+                    <TextView
+                        android:id="@+id/tvHeader1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kỷ lục:"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                    <com.google.android.flexbox.FlexboxLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        app:alignItems="center">
+
+                        <TextView
+                            android:id="@+id/tvBestWeight"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="12"
+                            android:textSize="26dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" kg"
+                            android:textFontWeight="400"
+                            android:textSize="18dp"
+                            app:layout_flexBasisPercent="50%" />
+                    </com.google.android.flexbox.FlexboxLayout>
+
+                </com.google.android.flexbox.FlexboxLayout>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kết quả"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <com.google.android.flexbox.FlexboxLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:alignContent="stretch"
+                    app:alignItems="center"
+                    app:flexWrap="nowrap">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mức tạ(kg):"
+                        android:textFontWeight="400"
+                        android:textSize="18dp"
+                        app:layout_flexBasisPercent="60%" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:hint="Nhập mức tạ"
+                        app:boxStrokeWidth="1dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txtWeight"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:inputType="number" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </com.google.android.flexbox.FlexboxLayout>
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <com.google.android.flexbox.FlexboxLayout
@@ -70,13 +171,13 @@
                     android:layout_marginRight="30dp"
                     android:background="@drawable/gradient_bg_color"
                     android:padding="0dp"
-                    android:text=" Tạm dừng"
+                    android:text=" XONG"
                     android:textAlignment="center"
                     android:textColor="@color/white"
                     android:textSize="24dp"
                     android:textStyle="bold"
                     app:backgroundTint="@null"
-                    app:icon="@drawable/stopico"
+                    app:icon="@drawable/check"
                     app:iconGravity="textStart"
                     app:iconPadding="0dp"
                     app:iconSize="20dp" />
@@ -137,65 +238,6 @@
                 </com.google.android.flexbox.FlexboxLayout>
 
             </com.google.android.flexbox.FlexboxLayout>
-<!--            <com.google.android.flexbox.FlexboxLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:paddingLeft="20dp"-->
-<!--                android:paddingRight="20dp"-->
-<!--                android:paddingBottom="20dp"-->
-<!--                app:alignContent="center"-->
-<!--                app:alignItems="center"-->
-<!--                app:flexDirection="row"-->
-<!--                app:flexWrap="nowrap"-->
-<!--                app:justifyContent="space_between">-->
-
-<!--                <androidx.cardview.widget.CardView-->
-<!--                    android:id="@+id/btnPrevious"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    app:cardElevation="0dp">-->
-
-<!--                    <ImageView-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:layout_margin="20dp"-->
-<!--                        android:src="@drawable/leftarrow" />-->
-<!--                </androidx.cardview.widget.CardView>-->
-
-
-<!--                <com.google.android.material.button.MaterialButton-->
-<!--                    android:id="@+id/btnStartStop"-->
-<!--                    android:layout_width="70dp"-->
-<!--                    android:layout_height="70dp"-->
-<!--                    android:hint="o"-->
-<!--                    android:insetLeft="0dp"-->
-<!--                    android:insetTop="0dp"-->
-<!--                    android:insetRight="0dp"-->
-<!--                    android:insetBottom="0dp"-->
-<!--                    android:padding="0dp"-->
-<!--                    app:backgroundTint="@color/orange"-->
-<!--                    app:icon="@drawable/stopico"-->
-<!--                    app:iconGravity="textStart"-->
-<!--                    app:iconPadding="0dp"-->
-<!--                    app:iconSize="20dp"-->
-<!--                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Circle" />-->
-
-<!--                <androidx.cardview.widget.CardView-->
-<!--                    android:id="@+id/btnNext"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_alignParentRight="true"-->
-<!--                    android:layout_centerVertical="true"-->
-<!--                    app:cardElevation="0dp">-->
-
-<!--                    <ImageView-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:layout_margin="20dp"-->
-<!--                        android:src="@drawable/rightarrow" />-->
-<!--                </androidx.cardview.widget.CardView>-->
-<!--            </com.google.android.flexbox.FlexboxLayout>-->
-
         </com.google.android.flexbox.FlexboxLayout>
     </ScrollView>
 
@@ -209,4 +251,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

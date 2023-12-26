@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StartWorkoutActivity">
+    tools:context=".LessonListActivity">
 
     <com.google.android.flexbox.FlexboxLayout
         android:id="@+id/thumbnail"
@@ -113,14 +113,14 @@
         android:layout_marginBottom="80dp">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvDate"
+            android:id="@+id/rvLesson"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="0dp"
             app:flexDirection="column"
             app:flexWrap="wrap"
             app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
-            tools:listitem="@layout/day_item" />
+            tools:listitem="@layout/lesson_item" />
 
     </ScrollView>
 
@@ -132,19 +132,65 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnStart"
+            android:id="@+id/btnRestart"
+            style="@style/Widget.Material3.Button.TextButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
+            android:padding="0dp"
+            android:text="Khởi động lại"
+            android:textAlignment="center"
+            android:textColor="@color/dark_gray"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:visibility="gone"/>
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:id="@+id/layoutBtnContinue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:layout_marginRight="20dp"
-            android:layout_marginBottom="10dp"
+            app:flexDirection="column"
+            android:visibility="gone">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnContinue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/gradient_bg_color"
+                android:padding="0dp"
+                android:text="Tiếp tục"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="24dp"
+                android:textStyle="bold"
+                app:backgroundTint="@null" />
+
+            <TextView
+                android:id="@+id/tvNote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="13% đã hoàn thành"
+                android:textAlignment="center"
+                android:textSize="16dp" />
+        </com.google.android.flexbox.FlexboxLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnStart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:background="@drawable/gradient_bg_color"
             android:padding="0dp"
-            android:text="Tập ngay"
+            android:text="Bắt đầu"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="24dp"
             android:textStyle="bold"
-            app:backgroundTint="@null" />
+            app:backgroundTint="@null"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"/>
     </com.google.android.flexbox.FlexboxLayout>
 </RelativeLayout>
