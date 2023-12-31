@@ -26,7 +26,7 @@ import com.google.firebase.database.ValueEventListener
 
 class DetailMealActivity : AppCompatActivity() {
     private var recyclerView: RecyclerView? = null
-    private var recyclerViewFoodAdd : RecyclerView? = null
+    private var recyclerViewFoodAdd: RecyclerView? = null
     private var mDetailMealAdapter: DetailMealAdapter? = null
     private var mMealStorageAdapter: MeaStorageAdapter? = null
     private var mListFood: MutableList<Food>? = null
@@ -56,7 +56,7 @@ class DetailMealActivity : AppCompatActivity() {
 
         // Lấy danh sách thực phẩm từ cơ sở dữ liệu Firebase
         listFoodDatabase
-       listFoodStorageDatabase
+        listFoodStorageDatabase
     }
 
     private fun initUi() {
@@ -68,7 +68,6 @@ class DetailMealActivity : AppCompatActivity() {
         recyclerView.addItemDecoration(dividerItemDecoration)
 
 
-
         // Khởi tạo danh sách thực phẩm
         mListFood = ArrayList()
         mDetailMealAdapter = DetailMealAdapter(mListFood)
@@ -77,12 +76,13 @@ class DetailMealActivity : AppCompatActivity() {
 
     }
 
-    private fun initUi_Storage(){
+    private fun initUi_Storage() {
         // Khởi tạo RecyclerView và Adapter cho DetailMeal
         val recyclerViewFoodAdd: RecyclerView = findViewById(R.id.recyclerViewFoodAdd)
         val linearLayoutManagerFoodAdd = LinearLayoutManager(this)
         recyclerViewFoodAdd.layoutManager = linearLayoutManagerFoodAdd
-        val dividerItemDecorationFoodAdd = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
+        val dividerItemDecorationFoodAdd =
+            DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
         recyclerViewFoodAdd.addItemDecoration(dividerItemDecorationFoodAdd)
 
         // Khởi tạo danh sách thực phẩm add

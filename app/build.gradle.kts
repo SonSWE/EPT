@@ -67,6 +67,7 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     implementation("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.0")
     implementation("io.coil-kt:coil:2.1.0")
+    implementation("com.github.bumptech.glide:glide:4.10.0")
 
     //NINH
     implementation("androidx.cardview:cardview:1.0.0")

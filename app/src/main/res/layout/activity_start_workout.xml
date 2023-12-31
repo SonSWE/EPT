@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StartWorkoutActivity">
+    tools:context=".StartWorkoutActivity"
+    android:background="@color/white">
 
     <com.google.android.flexbox.FlexboxLayout
         android:id="@+id/thumbnail"
@@ -31,7 +32,7 @@
                 tools:ignore="ContentDescription">
 
                 <ImageView
-                    android:id="@+id/ivLessonThumail"
+                    android:id="@+id/ivThumbnail"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
@@ -54,10 +55,10 @@
                 app:justifyContent="flex_end">
 
                 <TextView
+                    android:id="@+id/tvLessonName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:text="Bụng người mới bắt đầu"
                     android:textColor="@color/white"
                     android:textSize="24dp"
                     android:textStyle="bold" />
@@ -84,10 +85,10 @@
             </androidx.cardview.widget.CardView>
 
             <TextView
+                android:id="@+id/tvDesc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="20 phút 10 bài tập"
                 android:textSize="20dp"
                 android:textStyle="bold" />
         </com.google.android.flexbox.FlexboxLayout>
@@ -105,24 +106,30 @@
         </androidx.cardview.widget.CardView>
     </com.google.android.flexbox.FlexboxLayout>
 
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@id/thumbnail"
-        android:layout_marginBottom="80dp">
+        android:layout_marginBottom="80dp"
+        >
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvDate"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:padding="0dp"
-            app:flexDirection="column"
+            app:flexDirection="row"
             app:flexWrap="wrap"
-            app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
+            android:orientation="vertical"
+            tools:itemCount="5"
+            app:spanCount="5"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             tools:listitem="@layout/day_item" />
 
-    </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.flexbox.FlexboxLayout
         android:layout_width="match_parent"

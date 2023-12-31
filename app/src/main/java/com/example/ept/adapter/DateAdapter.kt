@@ -8,10 +8,10 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ept.R
 import com.example.ept.databinding.DayItemBinding
-import com.example.ept.model.DateModel
+import com.example.ept.model.DateInLessonInfo
 
 
-class DateAdapter(private val colection: List<DateModel>) :
+class DateAdapter(private val colection: List<DateInLessonInfo>) :
     RecyclerView.Adapter<DateAdapter.DateViewHolder>() {
 
     inner class DateViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -29,49 +29,17 @@ class DateAdapter(private val colection: List<DateModel>) :
     override fun onBindViewHolder(holder: DateViewHolder, position: Int) {
         holder.binding.apply {
             val colection = colection[position]
-            tvDay.text = colection.date
-
-            if (colection.done) {
+            tvDay.text = colection.day.toString()
+            if(colection.status == 0){
+                //khóa
+                cvDate.setBackgroundResource(R.drawable.card_disable)
+            }else if(colection.status == 1){
+                //đã tập
                 cvDate.setBackgroundResource(R.drawable.card_done)
-                holder.itemView.setOnClickListener { v ->
-                    Toast.makeText(
-                        v.context,
-                        "Đã hoàn thành: " + colection.date,
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-                holder.isRecyclable()
-            } else {
-                if (colection.active) {
-                    cvDate.setBackgroundResource(R.drawable.card_active)
-                    tvDay.setTextColor(Color.parseColor("#ffffff"))
-                    tvLabel.setTextColor(Color.parseColor("#ffffff"))
-
-                    cvDate.setBackgroundResource(R.drawable.card_done)
-                    holder.itemView.setOnClickListener { v ->
-                        Toast.makeText(
-                            v.context,
-                            "Bắt đầu tập nào: " + colection.date,
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                } else {
-                    cvDate.setBackgroundResource(R.drawable.card_disable)
-                    tvDay.setTextColor(Color.parseColor("#757575"))
-                    tvLabel.setTextColor(Color.parseColor("#757575"))
-
-                    cvDate.setBackgroundResource(R.drawable.card_done)
-                    holder.itemView.setOnClickListener { v ->
-                        Toast.makeText(
-                            v.context,
-                            "Chưa đến ngày: " + colection.date,
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                }
+            }else if(colection.status == 2){
+                //chưa tập
+                cvDate.setBackgroundResource(R.drawable.card_active)
             }
-
-
         }
     }
 }

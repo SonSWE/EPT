@@ -14,6 +14,7 @@
         app:cardCornerRadius="10dp"
         tools:ignore="MissingConstraints"
         android:clickable="true"
+        app:cardElevation="0dp"
         android:layout_marginBottom="10dp"
         android:foreground="?attr/selectableItemBackground">
         <FrameLayout
@@ -24,7 +25,7 @@
             tools:ignore="ContentDescription">
 
             <ImageView
-                android:id="@+id/ivLessonThumail"
+                android:id="@+id/ivLessonThumbnail"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/gymbg"
