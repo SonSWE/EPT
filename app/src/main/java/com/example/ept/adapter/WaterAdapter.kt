@@ -2,6 +2,7 @@ package com.example.ept.adapter
 
 
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +13,7 @@ import com.example.ept.R
 import com.example.ept.WaterHistoryActivity
 import com.example.ept.model.Water
 
-class WaterAdapter(private val dataList: MutableList<Water>, private val activity: WaterHistoryActivity)  :
+class WaterAdapter(private val dataList: MutableList<Water>, private val context: Context)  :
     RecyclerView.Adapter<WaterAdapter.ViewHolder>() {
 
 
@@ -35,7 +36,7 @@ class WaterAdapter(private val dataList: MutableList<Water>, private val activit
                 if (position != RecyclerView.NO_POSITION) {
                     removeItem(position)
                     // Cập nhật ProgressBar sau khi xóa card
-                    activity.updateProgressBar()
+                    (context as WaterHistoryActivity).updateProgressBar()
                 }
             }
         }

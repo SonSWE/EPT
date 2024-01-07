@@ -35,6 +35,16 @@ class MainActivity : AppCompatActivity() {
                     loadFragment(MealFragment())
                     true
                 }
+
+                R.id.waterFragment -> {
+                    loadFragment(WaterFragment())
+                    true
+                }
+
+                R.id.SleepAlarmFragment -> {
+                    loadFragment(SleepAlarmFragment())
+                    true
+                }
 //
 //                R.id.settings -> {
 //                    loadFragment(DashboardFragment())

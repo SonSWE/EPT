@@ -9,11 +9,11 @@
         android:icon="@drawable/pizza_slice"
         android:title="Chế độ ăn" />
     <item
-        android:id="@+id/warter"
+        android:id="@+id/waterFragment"
         android:icon="@drawable/water"
         android:title="Uống nước" />
     <item
-        android:id="@+id/sleep"
+        android:id="@+id/SleepAlarmFragment"
         android:icon="@drawable/moon"
         android:title="Giấc ngủ" />
 
