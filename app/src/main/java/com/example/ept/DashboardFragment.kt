@@ -88,7 +88,11 @@ class DashboardFragment : Fragment() {
                     val model = dataSnapshot.getValue<LessonInfo>()
                     if (model != null) {
                         if (model.lesson_Type == 1) {
-                            if (lstUserLesson.any { x -> x.user_Id == _user_id && x.lesson_Id == model.lesson_Id }) {
+                            var i =
+                                lstUserLesson.indexOfFirst { x -> x.user_Id == _user_id && x.lesson_Id == model.lesson_Id }
+                                    ?: -1
+                            if (i >= 0) {
+                                model.current_Date = lstUserLesson[i].current_Date
                                 _lstLessonByPlan!!.add(model)
                             }
                         } else if (model.lesson_Type == 2) {

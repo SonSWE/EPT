@@ -4,14 +4,16 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.ept.ExerciseListActivity
 import com.example.ept.R
 import com.example.ept.databinding.ExerciseItemBinding
 import com.example.ept.model.ExerciseInfo
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 
-class ExerciseAdapter(private val colection: List<ExerciseInfo>) :
+class ExerciseAdapter(private val active: ExerciseListActivity,private val colection: List<ExerciseInfo>) :
     RecyclerView.Adapter<ExerciseAdapter.ExerciseViewHolder>() {
 
     inner class ExerciseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -34,10 +36,8 @@ class ExerciseAdapter(private val colection: List<ExerciseInfo>) :
 
             Glide.with(this.root).load(colection.thumbnail).into(ivThumbnail)
 
-            cardLesson.setOnClickListener { v ->
-//                val intent = Intent(v.context, ExerciseListActivity::class.java)
-//                intent.putExtra("Lesson_Id", colection.exercise_Id)
-//                v.context.startActivity(intent)
+            cardExercise.setOnClickListener { v ->
+                active.OpenTutorial(colection)
             }
         }
 

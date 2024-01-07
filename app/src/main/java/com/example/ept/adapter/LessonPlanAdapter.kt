@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.ept.R
-import com.example.ept.StartWorkoutActivity
+import com.example.ept.DateWorkoutListActivity
 import com.example.ept.databinding.LessonPlanItemBinding
 import com.example.ept.model.LessonInfo
 
@@ -35,11 +35,8 @@ class LessonPlanAdapter(private val colection: List<LessonInfo>) :
             Glide.with(this.root).load(colection.thumbnail).into(ivLessonThumbnail)
 
             btnStartLesson.setOnClickListener { v ->
-                val intent = Intent(v.context, StartWorkoutActivity::class.java)
-                intent.putExtra("Lesson_Id", colection.lesson_Id)
-                intent.putExtra("Lesson_Desc", "54 buổi tập")
-                intent.putExtra("Lesson_Name", colection.name)
-                intent.putExtra("Thumbnail", colection.thumbnail)
+                val intent = Intent(v.context,  DateWorkoutListActivity::class.java)
+                intent.putExtra("lesson", colection)
                 v.context.startActivity(intent)
             }
         }

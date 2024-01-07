@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.FrameLayout
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import com.example.ept.model.ExerciseInfo
+import com.example.ept.model.ResultInfo
+import com.google.firebase.database.FirebaseDatabase
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.FullscreenListener
@@ -18,7 +21,11 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTube
 class WorkoutActivity : AppCompatActivity() {
     lateinit var _lstExercise: MutableList<ExerciseInfo>
     lateinit var Curent_Exercise: ExerciseInfo
+    lateinit var _result: ResultInfo
     var _curentExerciseIndex: Int = 0
+    var _lesson_Id: Int = 0
+    var _lesson_Type: Int = 0
+    var _user_Id: Int = 1
 
     private lateinit var youTubePlayer: YouTubePlayer
 
@@ -40,6 +47,9 @@ class WorkoutActivity : AppCompatActivity() {
 
         _lstExercise = intent.getSerializableExtra("exercise_list") as MutableList<ExerciseInfo>
         _curentExerciseIndex = intent.getIntExtra("curent_exercise_index", -1)
+        _lesson_Id = intent.getIntExtra("Lesson_Id", -1)
+        _lesson_Type = intent.getIntExtra("Lesson_Type", -1)
+        _result = intent.getSerializableExtra("result") as ResultInfo
 
         Curent_Exercise = _lstExercise[_curentExerciseIndex]
 
@@ -111,13 +121,45 @@ class WorkoutActivity : AppCompatActivity() {
             _curentExerciseIndex += 1
             Curent_Exercise = _lstExercise[_curentExerciseIndex]
             Curent_Exercise.video_Id?.let { youTubePlayer.cueVideo(it, 0f) }
-
+            UpdateResult()
             loadFragment(BreakTimeFragment())
         }
+    }
 
+    fun UpdateResult() {
+        val code =
+            _lesson_Id.toString() + "-" + _user_Id.toString() + "-" + _lesson_Type.toString()
+
+        if (_curentExerciseIndex + 1 == _lstExercise.size) {
+            _result.current_Date = _result.current_Date?.plus(1)
+            _result.status = 2
+        }
+
+        if (_result != null && _result.code != null && _result.code != "") {
+            // nếu đã có kết quả rồi thì cập nhật kết quả
+            _result.current_Exercise_Id = Curent_Exercise.exercise_Id
+            _result.count_Done = _result.count_Done?.plus(1)
+        } else {
+            //chưa có kết quả thì thêm mới
+            _result.code = code
+            _result.count_Done = _curentExerciseIndex + 1
+            _result.current_Exercise_Id = Curent_Exercise.exercise_Id
+            _result.status = 1
+            _result.lesson_Id = _lesson_Id
+            _result.user_Id = _user_Id
+        }
+
+        val db = FirebaseDatabase.getInstance().reference.child("Workout").child("Result")
+
+        db.child(_result.code!!).setValue(_result).addOnSuccessListener {
+//                Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show()
+        }.addOnFailureListener {
+            Toast.makeText(this, "Có lỗi xảy ra", Toast.LENGTH_SHORT).show()
+        }
     }
 
     fun SuccessExercise() {
+        UpdateResult()
         val succesIntent = Intent(this, LessonDoneActivity::class.java)
         startActivity(succesIntent)
     }

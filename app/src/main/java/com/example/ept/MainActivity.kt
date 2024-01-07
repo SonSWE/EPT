@@ -1,12 +1,18 @@
 package com.example.ept
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.Fragment
+import com.example.ept.Utils.UserShareReferentHelper
 import com.example.ept.model.DateInLessonInfo
 import com.example.ept.model.ExerciseInfo
 import com.example.ept.model.ExerciseLessonInfo
 import com.example.ept.model.LessonInfo
+import com.example.ept.model.ResultInfo
+import com.example.ept.model.UserInfo
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -14,12 +20,17 @@ import com.google.firebase.database.FirebaseDatabase
 
 class MainActivity : AppCompatActivity() {
     private lateinit var database: DatabaseReference
-
+    lateinit var userLogin: UserInfo
     lateinit var bottomNav: BottomNavigationView
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        try {
+            super.onCreate(savedInstanceState)
+            setContentView(R.layout.activity_main)
 
+            userLogin = UserShareReferentHelper().getUser(this)
+            if (userLogin == null && userLogin.User_Name == "") {
+
+            }
 //        val intent = Intent(this, StartWorkoutActivity::class.java)
 //        startActivity(intent)
 
@@ -28,7 +39,7 @@ class MainActivity : AppCompatActivity() {
 
 //        val intent = Intent(this, LessonListActivity::class.java)
 //        startActivity(intent)
-        val database = FirebaseDatabase.getInstance().reference
+            val database = FirebaseDatabase.getInstance().reference
 //        val ref = database.child("Workout").child("Lesson")
 //
 //        val data = ArrayList<LessonInfo>()
@@ -221,11 +232,26 @@ class MainActivity : AppCompatActivity() {
 //            newRef.setValue(item)
 //        }
 
+//        val ref = database.child("Workout").child("Exercise_Lesson")
+//        var lstExer = ArrayList<ExerciseLessonInfo>()
+//        lstExer.add(ExerciseLessonInfo(1,2,1,1))
+//        lstExer.add(ExerciseLessonInfo(2,2,2,1))
+//        lstExer.add(ExerciseLessonInfo(3,2,3,1))
+//        lstExer.add(ExerciseLessonInfo(4,2,4,1))
+//        lstExer.add(ExerciseLessonInfo(5,2,5,1))
+//        lstExer.add(ExerciseLessonInfo(6,2,6,1))
+//        for (item in lstExer) {
+//            val newRef = ref.push()
+//            newRef.setValue(item)
+//        }
+//
 //        val ref = database.child("Workout").child("Date_In_Lesson")
 //        //9 tuần
 //        for (i in 1..9) {
 //            //mỗi tuần 6 buổi
 //            for (j in 1..6) {
+//                //bài tập mỗi ngày
+//
 //                var name: String = ""
 //                var desc: String = ""
 //                var day: Int = i * j
@@ -283,43 +309,55 @@ class MainActivity : AppCompatActivity() {
 //            }
 //        }
 
-        loadFragment(DashboardFragment())
-        bottomNav = findViewById(R.id.bottomNav) as BottomNavigationView
-        bottomNav.setOnItemSelectedListener {
-            when (it.itemId) {
-                R.id.dashboardFragment -> {
-                    loadFragment(DashboardFragment())
-                    true
-                }
+//test update
+//        val ref = FirebaseDatabase.getInstance().reference.child("Workout").child("Result")
 
-                R.id.mealFragment -> {
-                    loadFragment(MealFragment())
-                    true
-                }
+
+            loadFragment(DashboardFragment())
+            bottomNav = findViewById(R.id.bottomNav) as BottomNavigationView
+
+            bottomNav.setOnItemSelectedListener {
+                when (it.itemId) {
+                    R.id.dashboardFragment -> {
+                        loadFragment(DashboardFragment())
+                        true
+                    }
+
+                    R.id.mealFragment -> {
+                        loadFragment(MealFragment())
+                        true
+                    }
 //
 //                R.id.settings -> {
 //                    loadFragment(DashboardFragment())
 //                    true
 //                }
 
-                else -> {
-                    false
+                    else -> {
+                        false
+                    }
                 }
             }
+        } catch (e: Exception) {
+            println("error: " + e.message)
         }
     }
 
     private fun loadFragment(fragment: Fragment) {
-        // Get a reference to the FragmentManager
-        val fragmentManager = supportFragmentManager
+        try {
+            // Get a reference to the FragmentManager
+            val fragmentManager = supportFragmentManager
 
-        // Start a new FragmentTransaction
-        val fragmentTransaction = fragmentManager.beginTransaction()
+            // Start a new FragmentTransaction
+            val fragmentTransaction = fragmentManager.beginTransaction()
 
-        // Replace the current fragment with the new fragment
-        fragmentTransaction.replace(R.id.container, fragment)
+            // Replace the current fragment with the new fragment
+            fragmentTransaction.replace(R.id.container, fragment)
 
-        // Commit the FragmentTransaction
-        fragmentTransaction.commit()
+            // Commit the FragmentTransaction
+            fragmentTransaction.commit()
+        } catch (e: Exception) {
+            println("error: " + e.message)
+        }
     }
 }

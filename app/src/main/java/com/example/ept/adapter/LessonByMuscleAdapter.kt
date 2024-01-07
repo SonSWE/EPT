@@ -38,11 +38,7 @@ class LessonByMuscleAdapter(private val colection: List<LessonInfo>) :
 
             cardLesson.setOnClickListener { v ->
                 val intent = Intent(v.context, ExerciseListActivity::class.java)
-                intent.putExtra("Lesson_Id", colection.lesson_Id)
-                intent.putExtra("Lesson_Desc", colection.description)
-                intent.putExtra("Lesson_Name", colection.name)
-                intent.putExtra("Thumbnail", colection.thumbnail)
-
+                intent.putExtra("lesson", colection)
                 v.context.startActivity(intent)
             }
         }

@@ -37,7 +37,7 @@ class BreakTimeFragment : Fragment() {
 
         val tvCountExercise = rootView.findViewById<TextView>(R.id.tvCountExercise)
         tvCountExercise.text =
-            (activity._curentExerciseIndex).toString() + "/" + activity._lstExercise.size.toString()
+            (activity._curentExerciseIndex+1).toString() + "/" + activity._lstExercise.size.toString()
 
         mTimeLeftInMillis = mTimeLeftInSeconds * 1000
         mTextViewCountDown = rootView.findViewById<TextView>(R.id.tvClockDown)
@@ -91,6 +91,10 @@ class BreakTimeFragment : Fragment() {
         val seconds = (mTimeLeftInMillis / 1000).toInt() % 60
         val timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds)
         mTextViewCountDown?.text = timeLeftFormatted
+
+        if (minutes == 0 && seconds == 0){
+            activity.LoadContenExercise()
+        }
     }
 
 }

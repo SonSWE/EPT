@@ -1,17 +1,21 @@
 package com.example.ept.adapter
 
+import android.content.Intent
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.example.ept.DateWorkoutListActivity
+import com.example.ept.ExerciseListActivity
 import com.example.ept.R
 import com.example.ept.databinding.DayItemBinding
 import com.example.ept.model.DateInLessonInfo
+import com.example.ept.model.LessonInfo
 
 
-class DateAdapter(private val colection: List<DateInLessonInfo>) :
+class DateAdapter(private val activity: DateWorkoutListActivity, private val colection: List<DateInLessonInfo>, private val  lesson: LessonInfo) :
     RecyclerView.Adapter<DateAdapter.DateViewHolder>() {
 
     inner class DateViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -39,6 +43,9 @@ class DateAdapter(private val colection: List<DateInLessonInfo>) :
             }else if(colection.status == 2){
                 //chưa tập
                 cvDate.setBackgroundResource(R.drawable.card_active)
+                cvDate.setOnClickListener {
+                    activity.goExerciseList()
+                }
             }
         }
     }

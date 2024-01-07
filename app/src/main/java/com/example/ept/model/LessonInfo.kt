@@ -2,16 +2,18 @@ package com.example.ept.model
 
 import com.google.firebase.database.Exclude
 import com.google.firebase.database.IgnoreExtraProperties
+import java.io.Serializable
 
 @IgnoreExtraProperties
 data class LessonInfo(
-    val lesson_Id: Int? = 0,
-    val name: String? = "",
-    val description: String? = "",
-    val level: Int? = 0,
-    val lesson_Type: Int? = 0,
-    val thumbnail: String? = ""
-){
+    var lesson_Id: Int? = 0,
+    var name: String? = "",
+    var description: String? = "",
+    var level: Int? = 0,
+    var lesson_Type: Int? = 0,
+    var thumbnail: String? = "",
+    var current_Date: Int? = 0
+): Serializable{
     @Exclude
     fun toMap(): Map<String, Any?> {
         return mapOf(

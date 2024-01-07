@@ -48,7 +48,7 @@
             android:name=".WorkoutBySetsActivity"
             android:exported="false" />
         <activity
-            android:name=".StartWorkoutActivity"
+            android:name=".DateWorkoutListActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

@@ -1,13 +1,14 @@
 package com.example.ept.model
 
 data class DateInLessonInfo(
-    val id: Int? = 0,
-    val lesson_Id: Int? = 0,
-    val day: Int? =0,
-    val name: String? = "",
-    val description: String? = "",
-    val time: Int? = 0,
-    val status: Int? = 0,
-    val thumbnail: String? = "",
-    val countDone: Int? =0
+    var date_Id: Int? = 0,
+    var lesson_Id: Int? = 0,
+    var day: Int? =0,
+    var name: String? = "",
+    var description: String? = "",
+    var time: Int? = 0,
+    var status: Int? = 0,
+    var thumbnail: String? = "",
+    var countDone: Int? =0,
+    var user_Id: Int? = 0,
 )
