@@ -1,14 +1,18 @@
 package com.example.ept.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.ept.R
+import com.example.ept.DateWorkoutListActivity
 import com.example.ept.databinding.LessonPlanItemBinding
-import com.example.ept.model.LessonModel
+import com.example.ept.model.LessonInfo
 
-class LessonPlanAdapter(private val colection: List<LessonModel>) :
+
+class LessonPlanAdapter(private val colection: List<LessonInfo>) :
     RecyclerView.Adapter<LessonPlanAdapter.LessonPlanViewHolder>() {
 
     inner class LessonPlanViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -26,8 +30,15 @@ class LessonPlanAdapter(private val colection: List<LessonModel>) :
     override fun onBindViewHolder(holder: LessonPlanViewHolder, position: Int) {
         holder.binding.apply {
             val colection = colection[position]
-            tvLessonName.text = colection.Name
-            tvLessonDesc.text = colection.Description
+            tvLessonName.text = colection.name
+            tvLessonDesc.text = colection.description
+            Glide.with(this.root).load(colection.thumbnail).into(ivLessonThumbnail)
+
+            btnStartLesson.setOnClickListener { v ->
+                val intent = Intent(v.context,  DateWorkoutListActivity::class.java)
+                intent.putExtra("lesson", colection)
+                v.context.startActivity(intent)
+            }
         }
 
 

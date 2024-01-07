@@ -1,19 +1,17 @@
 package com.example.ept
 
-import android.annotation.SuppressLint
-import android.content.DialogInterface
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
-import androidx.cardview.widget.CardView
+import com.example.ept.model.ExerciseInfo
 import com.google.android.material.button.MaterialButton
 import java.util.Locale
 
-class BreakTimeActivity : AppCompatActivity() {
-
+class BreakTimeFragment : Fragment() {
     private var mTextViewCountDown: TextView? = null
     private var mButtonAddTime: MaterialButton? = null
 
@@ -23,43 +21,42 @@ class BreakTimeActivity : AppCompatActivity() {
     private var mTimeLeftInMillis: Long = 0
     private var mEndTime: Long = 0
 
-    @SuppressLint("MissingInflatedId")
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_break_time)
+    private lateinit var activity: WorkoutActivity
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val rootView = inflater.inflate(R.layout.fragment_break_time, container, false)
+        activity = getActivity() as WorkoutActivity
 
+        val tvName = rootView.findViewById<TextView>(R.id.tvName)
+        tvName.text = activity.Curent_Exercise.exercise_Name
+
+        val tvDesc = rootView.findViewById<TextView>(R.id.tvDesc)
+        tvDesc.text = activity.Curent_Exercise.description
+
+        val tvCountExercise = rootView.findViewById<TextView>(R.id.tvCountExercise)
+        tvCountExercise.text =
+            (activity._curentExerciseIndex+1).toString() + "/" + activity._lstExercise.size.toString()
 
         mTimeLeftInMillis = mTimeLeftInSeconds * 1000
-        mTextViewCountDown = findViewById<TextView>(R.id.tvClockDown)
-        mButtonAddTime = findViewById<MaterialButton>(R.id.btnAddTime)
+        mTextViewCountDown = rootView.findViewById<TextView>(R.id.tvClockDown)
+        mButtonAddTime = rootView.findViewById<MaterialButton>(R.id.btnAddTime)
 
         startTimer()
         mTextViewCountDown?.text = secondsToMinutesAndSeconds(mTimeLeftInSeconds)
         mButtonAddTime?.setOnClickListener(View.OnClickListener {
             addTime()
-
         })
 
-        val positiveButtonClick = { dialog: DialogInterface, which: Int ->
-            finish()
-        }
-        val negativeButtonClick = { dialog: DialogInterface, which: Int ->
 
-        }
-
-        val btnNext: MaterialButton = findViewById<MaterialButton>(R.id.btnNext)
+        val btnNext: MaterialButton = rootView.findViewById<MaterialButton>(R.id.btnNext)
         btnNext.setOnClickListener(View.OnClickListener {
-//            if(!isDone){
-//                val builder = AlertDialog.Builder(this)
-//
-//                builder.setTitle("Thông báo")
-//                builder.setMessage("Bạn phải hoàn thành bài tập này trước khi chuyển sang bài tập tiếp theo")
-//                builder.setPositiveButton("Đồng ý", negativeButtonClick)
-//
-//                val alertDialog = builder.create()
-//                alertDialog.show()
-//            }
+            activity.LoadContenExercise()
         })
+
+        // Inflate the layout for this fragment
+        return rootView
     }
 
     fun secondsToMinutesAndSeconds(seconds: Long): String {
@@ -94,5 +91,10 @@ class BreakTimeActivity : AppCompatActivity() {
         val seconds = (mTimeLeftInMillis / 1000).toInt() % 60
         val timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds)
         mTextViewCountDown?.text = timeLeftFormatted
+
+        if (minutes == 0 && seconds == 0){
+            activity.LoadContenExercise()
+        }
     }
+
 }

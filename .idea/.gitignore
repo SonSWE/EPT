@@ -34,6 +34,8 @@ build/
 .navigation
 captures/
 output.json
+.bin
+.lock
 
 #NDK
 obj/

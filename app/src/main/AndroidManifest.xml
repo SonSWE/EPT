@@ -22,13 +22,13 @@
             android:name=".AddAlarmSleepActivity"
             android:exported="false" />
         <activity
-            android:name=".LessonListActivity"
+            android:name=".LessonDoneActivity"
             android:exported="false" />
         <activity
-            android:name=".WorkoutByRepsActivity"
+            android:name=".WorkoutActivity"
             android:exported="false" />
         <activity
-            android:name=".BreakTimeActivity"
+            android:name=".ExerciseListActivity"
             android:exported="false" />
         <activity
             android:name=".HomeActivity"
@@ -52,10 +52,7 @@
             android:name=".WorkoutBySetsActivity"
             android:exported="false" />
         <activity
-            android:name=".WorkoutByMinActivity"
-            android:exported="false" />
-        <activity
-            android:name=".StartWorkoutActivity"
+            android:name=".DateWorkoutListActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
