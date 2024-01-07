@@ -7,12 +7,6 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        >
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -542,12 +536,8 @@
                                     android:textStyle="bold" />
                             </RelativeLayout>
 
-                            <ScrollView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                >
+
+
 
                                 <androidx.recyclerview.widget.RecyclerView
                                     android:id="@+id/recyclerViewFoodMor"
@@ -558,7 +548,7 @@
 
                                     app:layout_constraintEnd_toEndOf="parent"/>
 
-                            </ScrollView>
+
 
 
 
@@ -717,12 +707,7 @@
                                     android:textStyle="bold" />
                             </RelativeLayout>
 
-                            <ScrollView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                >
+
 
                                 <androidx.recyclerview.widget.RecyclerView
                                     android:id="@+id/recyclerViewFoodLun"
@@ -732,9 +717,6 @@
                                     app:layout_constraintStart_toStartOf="parent"
 
                                     app:layout_constraintEnd_toEndOf="parent"/>
-
-                            </ScrollView>
-
 
 
 
@@ -892,12 +874,7 @@
                                     android:textStyle="bold" />
                             </RelativeLayout>
 
-                            <ScrollView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                >
+
 
                                 <androidx.recyclerview.widget.RecyclerView
                                     android:id="@+id/recyclerViewFoodNight"
@@ -908,7 +885,7 @@
 
                                     app:layout_constraintEnd_toEndOf="parent"/>
 
-                            </ScrollView>
+
 
 
 
@@ -993,7 +970,7 @@
             </LinearLayout>
 
         </LinearLayout>
-    </ScrollView>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
