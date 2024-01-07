@@ -27,10 +27,10 @@ class MainActivity : AppCompatActivity() {
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_main)
 
-            userLogin = UserShareReferentHelper().getUser(this)
-            if (userLogin == null && userLogin.User_Name == "") {
-
-            }
+//            userLogin = UserShareReferentHelper().getUser(this)
+//            if (userLogin == null && userLogin.User_Name == "") {
+//
+//            }
 //        val intent = Intent(this, StartWorkoutActivity::class.java)
 //        startActivity(intent)
 
