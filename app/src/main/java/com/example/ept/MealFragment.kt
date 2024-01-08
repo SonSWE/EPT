@@ -27,6 +27,7 @@ import com.example.ept.model.AlarmReceiver
 import com.example.ept.model.MealLunchModel
 import com.example.ept.model.MealMorningModel
 import com.example.ept.model.MealNightModel
+import com.google.android.material.button.MaterialButton
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -47,27 +48,32 @@ class MealFragment : Fragment() {
     private var mMealMenuNightAdapter: MealMenuNightAdapter? = null
     private var mListFoodNNight: MutableList<MealNightModel>? = mutableListOf()
 
-    private val notificationReceiver = object : BroadcastReceiver() {
-        override fun onReceive(context: Context?, intent: Intent?) {
-            if ("NOTIFICATION_SHOWN" == intent?.action) {
-                // Xử lý khi thông báo được hiển thị
-                updateTextColor()
-            }
-        }
-    }
+//    private val notificationReceiver = object : BroadcastReceiver() {
+//        override fun onReceive(context: Context?, intent: Intent?) {
+//            if ("NOTIFICATION_SHOWN" == intent?.action) {
+//                // Xử lý khi thông báo được hiển thị
+//                updateTextColor()
+//            }
+//        }
+//    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         rootView = inflater.inflate(R.layout.fragment_meal, container, false)
-        initUinext()
-        initUi()
-        initUiLunch()
-        initUiNight()
-        // Đăng ký notificationReceiver
-        val intentFilter = IntentFilter("NOTIFICATION_SHOWN")
-        requireActivity().registerReceiver(notificationReceiver, intentFilter)
+        try {
+            initUinext()
+            initUi()
+            initUiLunch()
+            initUiNight()
+            // Đăng ký notificationReceiver
+            val intentFilter = IntentFilter("NOTIFICATION_SHOWN")
+//        requireActivity().registerReceiver(notificationReceiver, intentFilter)
+
+        } catch (e: Exception) {
+            println("error: " + e.message)
+        }
         return rootView
     }
 
@@ -79,19 +85,19 @@ class MealFragment : Fragment() {
             startActivity(intent)
         }
 
-        val detailMead = rootView.findViewById<TextView>(R.id.detailMeal)
+        val detailMead = rootView.findViewById<MaterialButton>(R.id.detailMeal)
         detailMead.setOnClickListener { v: View? ->
             val intent = Intent(requireActivity(), DetailMealActivity::class.java)
             startActivity(intent)
         }
 
-        val detailMeadLunch = rootView.findViewById<TextView>(R.id.detailMealLunch)
+        val detailMeadLunch = rootView.findViewById<MaterialButton>(R.id.detailMealLunch)
         detailMeadLunch.setOnClickListener { v: View? ->
             val intent = Intent(requireActivity(), DetailMealLunchActivity::class.java)
             startActivity(intent)
         }
 
-        val detailMeadNight = rootView.findViewById<TextView>(R.id.detailMealNight)
+        val detailMeadNight = rootView.findViewById<MaterialButton>(R.id.detailMealNight)
         detailMeadNight.setOnClickListener { v: View? ->
             val intent = Intent(requireActivity(), DetailMealNightActivity::class.java)
             startActivity(intent)
@@ -142,7 +148,8 @@ class MealFragment : Fragment() {
 
     private fun initUiNight() {
         // Initialize RecyclerView and Adapter for dinner
-        val recyclerViewFoodNight: RecyclerView? = rootView?.findViewById(R.id.recyclerViewFoodNight)
+        val recyclerViewFoodNight: RecyclerView? =
+            rootView?.findViewById(R.id.recyclerViewFoodNight)
 
         // Check if recyclerViewFoodNight is not null before using it
         if (recyclerViewFoodNight != null) {
@@ -249,7 +256,8 @@ class MealFragment : Fragment() {
                     mMealMenuNightAdapter?.notifyDataSetChanged()
 
                     // Assuming there is a TextView in your UI with ID totalFoodNight
-                    val totalFoodNightTextView = rootView.findViewById<TextView>(R.id.totalFoodNight)
+                    val totalFoodNightTextView =
+                        rootView.findViewById<TextView>(R.id.totalFoodNight)
                     totalFoodNightTextView.text = "${mMealMenuNightAdapter?.calculateTotalKcal()}"
                 }
             }
@@ -263,7 +271,6 @@ class MealFragment : Fragment() {
             }
         })
     }
-
 
 
     private fun updateTextColor() {
@@ -301,7 +308,12 @@ class MealFragment : Fragment() {
         intent.putExtra("title", "Hãy uống nước đi")
         intent.putExtra("content", "Đến giờ uống nước rồi!")
         val pendingIntent =
-            PendingIntent.getBroadcast(requireContext(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+            PendingIntent.getBroadcast(
+                requireContext(),
+                0,
+                intent,
+                PendingIntent.FLAG_UPDATE_CURRENT
+            )
         val alarmManager = requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
         alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, pendingIntent)
     }
@@ -309,7 +321,7 @@ class MealFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         // Hủy đăng ký BroadcastReceiver khi Fragment kết thúc
-        requireActivity().unregisterReceiver(notificationReceiver)
+//        requireActivity().unregisterReceiver(notificationReceiver)
     }
 
 }

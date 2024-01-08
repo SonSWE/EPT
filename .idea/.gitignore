@@ -36,6 +36,8 @@ captures/
 output.json
 .bin
 .lock
+.properties
+.probe
 
 #NDK
 obj/
