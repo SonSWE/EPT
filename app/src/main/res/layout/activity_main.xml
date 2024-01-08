@@ -12,11 +12,15 @@
     <!--    android:layout_height="50dp"-->
     <!--    android:src="@drawable/ept_logo"/>-->
     <androidx.core.widget.NestedScrollView
-        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/bottomNav"
-        />
+        >
+        <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
