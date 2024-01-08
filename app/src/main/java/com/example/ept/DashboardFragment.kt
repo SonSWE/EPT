@@ -113,11 +113,6 @@ class DashboardFragment : Fragment() {
 
             override fun onCancelled(error: DatabaseError) {
                 // Xử lý khi có lỗi xảy ra
-//                Toast.makeText(
-//                    this@DashboardFragment,
-//                    "Lấy danh sách bài tập thất bại!",
-//                    Toast.LENGTH_SHORT
-//                ).show()
             }
         })
 
