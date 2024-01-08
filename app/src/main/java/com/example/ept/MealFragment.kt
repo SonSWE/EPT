@@ -27,6 +27,7 @@ import com.example.ept.model.AlarmReceiver
 import com.example.ept.model.MealLunchModel
 import com.example.ept.model.MealMorningModel
 import com.example.ept.model.MealNightModel
+import com.google.android.material.button.MaterialButton
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -84,19 +85,19 @@ class MealFragment : Fragment() {
             startActivity(intent)
         }
 
-        val detailMead = rootView.findViewById<TextView>(R.id.detailMeal)
+        val detailMead = rootView.findViewById<MaterialButton>(R.id.detailMeal)
         detailMead.setOnClickListener { v: View? ->
             val intent = Intent(requireActivity(), DetailMealActivity::class.java)
             startActivity(intent)
         }
 
-        val detailMeadLunch = rootView.findViewById<TextView>(R.id.detailMealLunch)
+        val detailMeadLunch = rootView.findViewById<MaterialButton>(R.id.detailMealLunch)
         detailMeadLunch.setOnClickListener { v: View? ->
             val intent = Intent(requireActivity(), DetailMealLunchActivity::class.java)
             startActivity(intent)
         }
 
-        val detailMeadNight = rootView.findViewById<TextView>(R.id.detailMealNight)
+        val detailMeadNight = rootView.findViewById<MaterialButton>(R.id.detailMealNight)
         detailMeadNight.setOnClickListener { v: View? ->
             val intent = Intent(requireActivity(), DetailMealNightActivity::class.java)
             startActivity(intent)

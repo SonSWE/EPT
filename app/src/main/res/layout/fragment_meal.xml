@@ -6,18 +6,14 @@
     android:layout_height="wrap_content"
     android:background="#f3f6f9"
     tools:context=".MainActivity">
-    <!-- TODO: Update blank fragment layout -->
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
         <com.google.android.flexbox.FlexboxLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingBottom="30dp"
             app:alignItems="center"
             app:flexDirection="column"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+           >
 
             <com.google.android.flexbox.FlexboxLayout
                 android:layout_width="match_parent"
@@ -32,8 +28,8 @@
                 <!--                style="@style/ThemeOverlay.Material3.Button.TextButton"-->
                 <!--                android:layout_width="40dp"-->
                 <!--                android:layout_height="30dp"-->
-                <!--                android:insetTop="0"-->
-                <!--                android:insetBottom="0"-->
+                <!--                android:insetTop="0dp"-->
+                <!--                android:insetBottom="0dp"-->
                 <!--                app:backgroundTint="@color/white"-->
                 <!--                app:icon="@drawable/baseline_arrow_back_24"-->
                 <!--                app:iconGravity="textStart"-->
@@ -53,8 +49,8 @@
                 <!--            <com.google.android.material.button.MaterialButton-->
                 <!--                android:layout_width="40dp"-->
                 <!--                android:layout_height="30dp"-->
-                <!--                android:insetTop="0"-->
-                <!--                android:insetBottom="0"-->
+                <!--                android:insetTop="0dp"-->
+                <!--                android:insetBottom="0dp"-->
                 <!--                app:icon="@drawable/baseline_menu_24"-->
                 <!--                app:iconGravity="textStart"-->
                 <!--                app:iconPadding="0dp" />-->
@@ -63,8 +59,8 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="170dp"
-                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="15dp"
@@ -87,7 +83,7 @@
                     <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:alpha="0.2"
+                        android:alpha="0.4"
                         android:background="@color/black" />
                 </FrameLayout>
 
@@ -100,40 +96,42 @@
                     <com.google.android.flexbox.FlexboxLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:alignContent="center"
+
                         app:alignItems="center"
                         app:flexDirection="row"
                         app:flexWrap="nowrap"
                         app:justifyContent="space_between">
 
                         <TextView
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Hôm nay"
                             android:textColor="@color/white"
                             android:textSize="25dp"
-                            android:textStyle="bold"
-                            app:layout_flexBasisPercent="30%">
+                            android:textStyle="bold" />
 
-                        </TextView>
-
-                        <TextView
-                            android:layout_width="match_parent"
+                        <com.google.android.flexbox.FlexboxLayout
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:gravity="center"
-                            android:text="20/11/2023"
-                            android:textColor="@color/white"
-                            android:textSize="15sp"
-                            android:textStyle="bold"
-                            app:layout_flexBasisPercent="40%"></TextView>
+                            app:flexDirection="row"
+                            app:flexWrap="nowrap"
+                            app:justifyContent="flex_end">
 
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="20/11/2023"
+                                android:textColor="@color/white"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
 
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:layout_flexBasisPercent="20%"
-                            app:srcCompat="@drawable/baseline_calendar_today_24"></ImageView>
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:src="@drawable/baseline_calendar_today_24" />
+                        </com.google.android.flexbox.FlexboxLayout>
                     </com.google.android.flexbox.FlexboxLayout>
 
 
@@ -144,13 +142,12 @@
                         android:textAlignment="textStart"
                         android:textColor="@color/white"
                         android:textSize="14sp"
-                        android:textStyle="bold"></TextView>
+                        android:textStyle="bold" />
 
                     <com.google.android.flexbox.FlexboxLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        app:alignContent="center"
                         app:alignItems="center"
                         app:flexDirection="row"
                         app:flexWrap="nowrap"
@@ -160,10 +157,10 @@
                             android:id="@+id/ttc1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Cân nặng: "
+                            android:text="Cân nặng:"
                             android:textColor="@color/white"
                             android:textSize="14sp"
-                            android:textStyle="bold" />
+                            android:textStyle="normal" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -182,23 +179,19 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        app:alignContent="center"
                         app:alignItems="center"
                         app:flexDirection="row"
                         app:flexWrap="nowrap"
                         app:justifyContent="flex_start">
 
-
                         <TextView
                             android:id="@+id/ttc"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Tỉ lệ lượng mỡ cơ thể: "
+                            android:text="Tỉ lệ lượng mỡ cơ thể:"
                             android:textColor="@color/white"
                             android:textSize="14sp"
-                            android:textStyle="bold">
-
-                        </TextView>
+                            android:textStyle="normal" />
 
                         <TextView
                             android:id="@+id/textView2"
@@ -210,10 +203,7 @@
                             android:text="28.2% "
                             android:textColor="@color/white"
                             android:textSize="14sp"
-                            android:textStyle="bold">
-
-                        </TextView>
-
+                            android:textStyle="bold" />
 
                     </com.google.android.flexbox.FlexboxLayout>
 
@@ -221,16 +211,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        app:alignContent="center"
                         app:alignItems="center"
                         app:flexDirection="row"
                         app:flexWrap="nowrap"
                         app:justifyContent="space_between">
 
                         <com.google.android.flexbox.FlexboxLayout
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            app:alignContent="center"
+
                             app:alignItems="center"
                             app:flexDirection="row"
                             app:flexWrap="nowrap"
@@ -240,33 +229,24 @@
                                 android:id="@+id/ttc3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Khối lượng cơ: "
+                                android:text="Khối lượng cơ:"
                                 android:textColor="@color/white"
                                 android:textSize="14sp"
-                                android:textStyle="bold">
-
-                            </TextView>
+                                android:textStyle="normal" />
 
                             <TextView
-
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_alignParentEnd="true"
                                 android:layout_marginLeft="5dp"
-
-                                android:layout_toRightOf="@+id/ttc3"
                                 android:text="28.2% "
                                 android:textColor="@color/white"
                                 android:textSize="14sp"
-                                android:textStyle="bold">
-
-                            </TextView>
+                                android:textStyle="bold" />
                         </com.google.android.flexbox.FlexboxLayout>
 
                         <com.google.android.flexbox.FlexboxLayout
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            app:alignContent="center"
                             app:alignItems="center"
                             app:flexDirection="row"
                             app:flexWrap="nowrap"
@@ -276,32 +256,20 @@
                                 android:id="@+id/ttc4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-
-                                android:paddingHorizontal="3dp"
                                 android:text="Total:"
                                 android:textColor="@color/white"
                                 android:textSize="14sp"
-                                android:textStyle="bold">
-
-
-                            </TextView>
+                                android:textStyle="normal"
+                                android:layout_marginRight="7dp"/>
 
                             <TextView
-
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-
-                                android:layout_alignParentEnd="true"
-                                android:layout_toRightOf="@+id/ttc4"
-                                android:gravity="start"
-                                android:paddingHorizontal="5dp"
+                                android:layout_marginLeft="5dp"
                                 android:text="500g"
                                 android:textColor="@color/white"
                                 android:textSize="14sp"
-                                android:textStyle="bold">
-
-
-                            </TextView>
+                                android:textStyle="bold" />
                         </com.google.android.flexbox.FlexboxLayout>
                     </com.google.android.flexbox.FlexboxLayout>
 
@@ -312,7 +280,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginRight="20dp"
                 app:alignItems="center"
                 app:flexDirection="column">
@@ -328,21 +296,22 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    app:cardCornerRadius="5dp"
-                    app:cardUseCompatPadding="true">
+                    android:layout_marginTop="10dp"
+                    app:cardElevation="0dp"
+                    android:elevation="0dp"
+                    app:cardCornerRadius="5dp">
 
                     <com.google.android.flexbox.FlexboxLayout
                         android:id="@+id/item_water"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        app:alignItems="center"
+                        android:padding="15dp"
+                        app:alignItems="flex_start"
                         app:flexDirection="column"
                         app:justifyContent="center">
 
                         <TextView
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="2250 ml"
                             android:textColor="@color/red_100"
@@ -350,8 +319,7 @@
                             android:textStyle="bold" />
 
                         <TextView
-
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="5dp"
                             android:text="Mục tiêu uống nước hàng ngày"
@@ -366,21 +334,19 @@
                             android:background="@drawable/line_4"
                             android:clipToOutline="true" />
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
+                        <com.google.android.flexbox.FlexboxLayout
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:layout_weight="1"
-                            android:orientation="horizontal">
+                            app:alignItems="center"
+                            app:flexWrap="nowrap">
 
                             <ImageView
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
                                 android:layout_alignParentEnd="true"
                                 android:layout_centerVertical="true"
-
-                                app:srcCompat="@drawable/baseline_access_time_24" />
-
+                                android:src="@drawable/baseline_access_time_24" />
 
                             <TextView
                                 android:id="@+id/textNext"
@@ -403,25 +369,19 @@
                                 android:textSize="14sp"
                                 android:textStyle="bold" />
 
+                        </com.google.android.flexbox.FlexboxLayout>
 
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
+                        <com.google.android.flexbox.FlexboxLayout
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:layout_weight="1"
-                            android:orientation="horizontal">
+                            app:alignItems="center"
+                            app:flexWrap="nowrap">
 
                             <ImageView
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
-                                android:layout_alignParentEnd="true"
-                                android:layout_centerVertical="true"
-
-                                app:srcCompat="@drawable/baseline_notifications_active_24">
-
-                            </ImageView>
+                                android:src="@drawable/baseline_notifications_active_24" />
 
                             <TextView
                                 android:id="@+id/notificationDis"
@@ -438,22 +398,18 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="5dp"
-                                android:layout_marginTop="2dp"
                                 android:textColor="@color/yellow_100"
                                 android:textSize="14sp"
                                 android:textStyle="bold" />
 
-                        </LinearLayout>
-
-
+                        </com.google.android.flexbox.FlexboxLayout>
                     </com.google.android.flexbox.FlexboxLayout>
-
-
                 </androidx.cardview.widget.CardView>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
                     android:text="Thực đơn các bữa ăn"
                     android:textColor="@color/black"
                     android:textSize="16dp"
@@ -462,10 +418,10 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    app:cardCornerRadius="5dp"
-
-                    app:cardUseCompatPadding="true">
+                    android:layout_marginTop="10dp"
+                    app:cardElevation="0dp"
+                    android:elevation="0dp"
+                    app:cardCornerRadius="5dp">
 
                     <com.google.android.flexbox.FlexboxLayout
                         android:layout_width="match_parent"
@@ -475,52 +431,73 @@
                         app:flexDirection="column"
                         app:justifyContent="center">
 
-                        <RelativeLayout
+                        <com.google.android.flexbox.FlexboxLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            app:alignItems="center"
+                            app:flexWrap="nowrap"
+                            app:justifyContent="space_between">
 
-                            <TextView
+                            <com.google.android.flexbox.FlexboxLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginTop="2dp"
-                                android:text="Bữa sáng: "
-                                android:textColor="@color/black"
-                                android:textSize="16dp"
-                                android:textStyle="bold" />
+                                app:alignItems="center"
+                                app:flexWrap="nowrap"
+                                app:justifyContent="flex_start">
 
-                            <ImageView
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Bữa sáng: "
+                                    android:textColor="@color/black"
+                                    android:textSize="16dp"
+                                    android:textStyle="bold" />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/baseline_access_alarm_24" />
+                            </com.google.android.flexbox.FlexboxLayout>
+
+                            <com.google.android.flexbox.FlexboxLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="80dp"
-                                app:srcCompat="@drawable/baseline_access_alarm_24">
+                                app:alignItems="center"
+                                app:flexWrap="nowrap"
+                                app:justifyContent="flex_start">
 
-                            </ImageView>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="7:00"
+                                    android:textColor="@color/grey_200"
+                                    android:textSize="13sp"
+                                    android:textStyle="bold" />
 
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="100dp"
-                                android:layout_marginTop="2dp"
-                                android:text="7:00"
-                                android:textColor="@color/grey_200"
-                                android:textSize="13sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/detailMeal"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentEnd="true"
-                                android:layout_centerVertical="true"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginTop="2dp"
-                                android:text="Chi tiết bữa ăn"
-                                android:textColor="@color/green"
-                                android:textSize="13sp"
-                                android:textStyle="bold" />
-                        </RelativeLayout>
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/detailMeal"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="30dp"
+                                    android:text="Chi tiết"
+                                    android:insetBottom="0dp"
+                                    android:layout_marginLeft="5dp"
+                                    android:insetTop="0dp"
+                                    
+                                    android:padding="0dp"
+                                    app:backgroundTint="@color/green"
+                                    android:elevation="4dp"
+                                    />
+<!--                                <TextView-->
+<!--                                    android:id="@+id/detailMeal"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginLeft="5dp"-->
+<!--                                    android:text="Chi tiết bữa ăn"-->
+<!--                                    android:textColor="@color/green"-->
+<!--                                    android:textSize="13sp"-->
+<!--                                    android:textStyle="bold" />-->
+                            </com.google.android.flexbox.FlexboxLayout>
+                        </com.google.android.flexbox.FlexboxLayout>
 
 
                         <androidx.recyclerview.widget.RecyclerView
@@ -535,76 +512,50 @@
                             android:background="@drawable/line_4"
                             android:clipToOutline="true" />
 
-                        <RelativeLayout
+                        <com.google.android.flexbox.FlexboxLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp">
+                            android:layout_marginTop="10dp"
+                            app:alignItems="center"
+                            app:flexWrap="nowrap"
+                            app:justifyContent="flex_end">
 
 
                             <TextView
                                 android:id="@+id/ttc5"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="180dp"
-
-                                android:paddingHorizontal="3dp"
                                 android:text="Total:"
-                                android:textColor="@color/black"
                                 android:textSize="14sp"
-                                android:textStyle="bold">
-
-
-                            </TextView>
+                                android:textStyle="normal"
+                                android:layout_marginRight="7dp"/>
 
                             <TextView
                                 android:id="@+id/totalFoodMor"
-                                android:layout_width="match_parent"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-
-                                android:layout_alignParentEnd="true"
-                                android:layout_toRightOf="@+id/ttc5"
-                                android:gravity="start"
-                                android:paddingHorizontal="5dp"
-
-                                android:textColor="@color/black"
                                 android:textSize="14sp"
-                                android:textStyle="bold">
-
-
-                            </TextView>
+                                android:textStyle="bold" />
 
                             <TextView
-
-                                android:layout_width="match_parent"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-
-                                android:layout_alignParentEnd="true"
-                                android:layout_marginLeft="8dp"
-                                android:layout_marginTop="3dp"
-                                android:layout_toRightOf="@+id/ttc5"
-                                android:gravity="end"
-                                android:paddingHorizontal="10dp"
+                                android:layout_marginLeft="5dp"
                                 android:text="Kcal"
                                 android:textColor="@color/grey"
                                 android:textSize="10sp"
-                                android:textStyle="bold">
-
-
-                            </TextView>
-
-
-                        </RelativeLayout>
+                                android:textStyle="bold" />
+                        </com.google.android.flexbox.FlexboxLayout>
                     </com.google.android.flexbox.FlexboxLayout>
-
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    app:cardCornerRadius="5dp"
-
-                    app:cardUseCompatPadding="true">
+                    android:layout_marginTop="10dp"
+                    app:cardElevation="0dp"
+                    android:elevation="0dp"
+                    app:cardCornerRadius="5dp">
 
                     <com.google.android.flexbox.FlexboxLayout
                         android:layout_width="match_parent"
@@ -615,200 +566,75 @@
                         app:justifyContent="center">
 
 
-                        <RelativeLayout
+                        <com.google.android.flexbox.FlexboxLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            app:alignItems="center"
+                            app:flexWrap="nowrap"
+                            app:justifyContent="space_between">
 
-                            <TextView
+                            <com.google.android.flexbox.FlexboxLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginTop="2dp"
-                                android:text="Bữa trưa: "
-                                android:textColor="@color/black"
-                                android:textSize="16dp"
-                                android:textStyle="bold" />
+                                app:alignItems="center"
+                                app:flexWrap="nowrap"
+                                app:justifyContent="flex_start">
 
-                            <ImageView
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Bữa trưa: "
+                                    android:textColor="@color/black"
+                                    android:textSize="16dp"
+                                    android:textStyle="bold" />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/baseline_access_alarm_24" />
+                            </com.google.android.flexbox.FlexboxLayout>
+
+                            <com.google.android.flexbox.FlexboxLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="80dp"
-                                app:srcCompat="@drawable/baseline_access_alarm_24">
+                                app:alignItems="center"
+                                app:flexWrap="nowrap"
+                                app:justifyContent="flex_start">
 
-                            </ImageView>
-
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="100dp"
-                                android:layout_marginTop="2dp"
-                                android:text="11:30"
-                                android:textColor="@color/grey_200"
-                                android:textSize="13sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/detailMealLunch"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentEnd="true"
-                                android:layout_centerVertical="true"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginTop="2dp"
-                                android:text="Chi tiết bữa ăn"
-                                android:textColor="@color/green"
-                                android:textSize="13sp"
-                                android:textStyle="bold" />
-                        </RelativeLayout>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="11:30"
+                                    android:textColor="@color/grey_200"
+                                    android:textSize="13sp"
+                                    android:textStyle="bold" />
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/detailMealLunch"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="30dp"
+                                    android:text="Chi tiết"
+                                    android:insetBottom="0dp"
+                                    android:insetTop="0dp"
+                                    android:layout_marginLeft="5dp"
+                                    android:padding="0dp"
+                                    app:backgroundTint="@color/green"
+                                    android:elevation="4dp"
+                                    />
+<!--                                <TextView-->
+<!--                                    android:id="@+id/detailMealLunch"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginLeft="5dp"-->
+<!--                                    android:text="Chi tiết bữa ăn"-->
+<!--                                    android:textColor="@color/green"-->
+<!--                                    android:textSize="13sp"-->
+<!--                                    android:textStyle="bold" />-->
+                            </com.google.android.flexbox.FlexboxLayout>
+                        </com.google.android.flexbox.FlexboxLayout>
 
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/recyclerViewFoodLun"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"/>
-
-
-                        <View
-
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="@drawable/line_4"
-                            android:clipToOutline="true" />
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp">
-
-
-                            <TextView
-                                android:id="@+id/ttc5Lunch"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="180dp"
-
-                                android:paddingHorizontal="3dp"
-                                android:text="Total:"
-                                android:textColor="@color/black"
-                                android:textSize="14sp"
-                                android:textStyle="bold">
-
-
-                            </TextView>
-
-                            <TextView
-                                android:id="@+id/totalFoodLunch"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-
-                                android:layout_alignParentEnd="true"
-                                android:layout_toRightOf="@+id/ttc5Lunch"
-                                android:gravity="start"
-                                android:paddingHorizontal="5dp"
-
-                                android:textColor="@color/black"
-                                android:textSize="14sp"
-                                android:textStyle="bold">
-
-
-                            </TextView>
-
-                            <TextView
-
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-
-                                android:layout_alignParentEnd="true"
-                                android:layout_marginLeft="8dp"
-                                android:layout_marginTop="3dp"
-                                android:layout_toRightOf="@+id/ttc5Lunch"
-                                android:gravity="end"
-                                android:paddingHorizontal="10dp"
-                                android:text="Kcal"
-                                android:textColor="@color/grey"
-                                android:textSize="10sp"
-                                android:textStyle="bold">
-
-
-                            </TextView>
-
-
-                        </RelativeLayout>
-
-                    </com.google.android.flexbox.FlexboxLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    app:cardCornerRadius="5dp"
-
-                    app:cardUseCompatPadding="true">
-
-
-                    <com.google.android.flexbox.FlexboxLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        app:alignItems="center"
-                        app:flexDirection="column"
-                        app:justifyContent="center">
-
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginTop="2dp"
-                                android:text="Bữa tối: "
-                                android:textColor="@color/black"
-                                android:textSize="16dp"
-                                android:textStyle="bold" />
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="80dp"
-                                app:srcCompat="@drawable/baseline_access_alarm_24">
-
-                            </ImageView>
-
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="100dp"
-                                android:layout_marginTop="2dp"
-                                android:text="19:00"
-                                android:textColor="@color/grey_200"
-                                android:textSize="13sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/detailMealNight"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentEnd="true"
-                                android:layout_centerVertical="true"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginTop="2dp"
-                                android:text="Chi tiết bữa ăn"
-                                android:textColor="@color/green"
-                                android:textSize="13sp"
-                                android:textStyle="bold" />
-                        </RelativeLayout>
-
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/recyclerViewFoodNight"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp" />
@@ -821,65 +647,177 @@
                             android:background="@drawable/line_4"
                             android:clipToOutline="true" />
 
-                        <RelativeLayout
+                        <com.google.android.flexbox.FlexboxLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp">
+                            android:layout_marginTop="10dp"
+                            app:alignItems="center"
+                            app:flexWrap="nowrap"
+                            app:justifyContent="flex_end">
+
+
+                            <TextView
+                                android:id="@+id/ttc5Lunch"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Total:"
+                                android:textSize="14sp"
+                                android:textStyle="normal"
+                                android:layout_marginRight="7dp"/>
+
+                            <TextView
+                                android:id="@+id/totalFoodLunch"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/black"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Kcal"
+                                android:textColor="@color/grey"
+                                android:textSize="10sp"
+                                android:textStyle="bold" />
+
+                        </com.google.android.flexbox.FlexboxLayout>
+
+                    </com.google.android.flexbox.FlexboxLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:cardElevation="0dp"
+                    android:elevation="0dp"
+                    app:cardCornerRadius="5dp">
+
+
+                    <com.google.android.flexbox.FlexboxLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        app:alignItems="center"
+                        app:flexDirection="column"
+                        app:justifyContent="center">
+
+
+                        <com.google.android.flexbox.FlexboxLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:alignItems="center"
+                            app:flexWrap="nowrap"
+                            app:justifyContent="space_between">
+
+                            <com.google.android.flexbox.FlexboxLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:alignItems="center"
+                                app:flexWrap="nowrap"
+                                app:justifyContent="flex_start">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Bữa tối: "
+                                    android:textColor="@color/black"
+                                    android:textSize="16dp"
+                                    android:textStyle="bold" />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/baseline_access_alarm_24" />
+                            </com.google.android.flexbox.FlexboxLayout>
+
+                            <com.google.android.flexbox.FlexboxLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:alignItems="center"
+                                app:flexWrap="nowrap"
+                                app:justifyContent="flex_start">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="19:00"
+                                    android:textColor="@color/grey_200"
+                                    android:textSize="13sp"
+                                    android:textStyle="bold" />
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/detailMealNight"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="30dp"
+                                    android:text="Chi tiết"
+                                    android:insetBottom="0dp"
+                                    android:layout_marginLeft="5dp"
+                                    android:insetTop="0dp"
+                                    android:padding="0dp"
+                                    app:backgroundTint="@color/green"
+                                    android:elevation="4dp"
+                                    />
+<!--                                <TextView-->
+<!--                                    android:id="@+id/detailMealNight"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginLeft="5dp"-->
+<!--                                    android:text="Chi tiết bữa ăn"-->
+<!--                                    android:textColor="@color/green"-->
+<!--                                    android:textSize="13sp"-->
+<!--                                    android:textStyle="bold" />-->
+                            </com.google.android.flexbox.FlexboxLayout>
+                        </com.google.android.flexbox.FlexboxLayout>
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerViewFoodNight"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@drawable/line_4"
+                            android:clipToOutline="true" />
+
+                        <com.google.android.flexbox.FlexboxLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            app:alignItems="center"
+                            app:flexWrap="nowrap"
+                            app:justifyContent="flex_end">
 
 
                             <TextView
                                 android:id="@+id/ttc5Night"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="180dp"
-
-                                android:paddingHorizontal="3dp"
                                 android:text="Total:"
-                                android:textColor="@color/black"
                                 android:textSize="14sp"
-                                android:textStyle="bold">
-
-
-                            </TextView>
+                                android:textStyle="normal"
+                                android:layout_marginRight="7dp"/>
 
                             <TextView
                                 android:id="@+id/totalFoodNight"
-                                android:layout_width="match_parent"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-
-                                android:layout_alignParentEnd="true"
-                                android:layout_toRightOf="@+id/ttc5Night"
-                                android:gravity="start"
-                                android:paddingHorizontal="5dp"
-
-                                android:textColor="@color/black"
                                 android:textSize="14sp"
-                                android:textStyle="bold">
-
-
-                            </TextView>
+                                android:textStyle="bold" />
 
                             <TextView
-
-                                android:layout_width="match_parent"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-
-                                android:layout_alignParentEnd="true"
-                                android:layout_marginLeft="8dp"
-                                android:layout_marginTop="3dp"
-                                android:layout_toRightOf="@+id/ttc5Night"
-                                android:gravity="end"
-                                android:paddingHorizontal="10dp"
                                 android:text="Kcal"
                                 android:textColor="@color/grey"
                                 android:textSize="10sp"
-                                android:textStyle="bold">
+                                android:textStyle="bold" />
 
-
-                            </TextView>
-
-
-                        </RelativeLayout>
+                        </com.google.android.flexbox.FlexboxLayout>
 
                     </com.google.android.flexbox.FlexboxLayout>
 
@@ -889,5 +827,5 @@
             </com.google.android.flexbox.FlexboxLayout>
 
         </com.google.android.flexbox.FlexboxLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </FrameLayout>
