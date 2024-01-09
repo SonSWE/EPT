@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.example.ept.ExerciseListActivity
 import com.example.ept.R
 import com.example.ept.databinding.LessonByMuscleItemBinding
-import com.example.ept.model.LessonInfo
+import com.example.ept.ObjectInfor.LessonInfo
 
 
 class LessonByMuscleAdapter(private val colection: List<LessonInfo>) :

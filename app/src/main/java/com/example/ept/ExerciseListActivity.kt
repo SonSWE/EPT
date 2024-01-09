@@ -1,6 +1,5 @@
 package com.example.ept
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,19 +10,16 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.ept.adapter.ExerciseAdapter
-import com.example.ept.model.ExerciseLessonInfo
-import com.example.ept.model.ExerciseInfo
-import com.example.ept.model.LessonInfo
-import com.example.ept.model.ResultInfo
+import com.example.ept.ObjectInfor.ExerciseLessonInfo
+import com.example.ept.ObjectInfor.ExerciseInfo
+import com.example.ept.ObjectInfor.LessonInfo
+import com.example.ept.ObjectInfor.ResultInfo
 import com.google.android.flexbox.FlexboxLayout
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.button.MaterialButton
-import com.google.android.material.card.MaterialCardView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference

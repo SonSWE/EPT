@@ -3,16 +3,9 @@ package com.example.ept
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
-import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.Fragment
 import com.example.ept.Utils.UserShareReferentHelper
-import com.example.ept.model.DateInLessonInfo
-import com.example.ept.model.ExerciseInfo
-import com.example.ept.model.ExerciseLessonInfo
-import com.example.ept.model.LessonInfo
-import com.example.ept.model.ResultInfo
-import com.example.ept.model.UserInfo
+import com.example.ept.ObjectInfor.UserInfo
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -27,10 +20,11 @@ class MainActivity : AppCompatActivity() {
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_main)
 
-//            userLogin = UserShareReferentHelper().getUser(this)
-//            if (userLogin == null && userLogin.User_Name == "") {
-//
-//            }
+            userLogin = UserShareReferentHelper().getUser(this)
+            if (userLogin == null && userLogin.user_Name == "") {
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+            }
 //        val intent = Intent(this, StartWorkoutActivity::class.java)
 //        startActivity(intent)
 
@@ -323,20 +317,20 @@ class MainActivity : AppCompatActivity() {
                         true
                     }
 
-                R.id.mealFragment -> {
-                    loadFragment(MealFragment())
-                    true
-                }
+                    R.id.mealFragment -> {
+                        loadFragment(MealFragment())
+                        true
+                    }
 
-                R.id.waterFragment -> {
-                    loadFragment(WaterFragment())
-                    true
-                }
+                    R.id.waterFragment -> {
+                        loadFragment(WaterFragment())
+                        true
+                    }
 
-                R.id.SleepAlarmFragment -> {
-                    loadFragment(SleepAlarmFragment())
-                    true
-                }
+                    R.id.SleepAlarmFragment -> {
+                        loadFragment(SleepAlarmFragment())
+                        true
+                    }
 //
 //                R.id.settings -> {
 //                    loadFragment(DashboardFragment())

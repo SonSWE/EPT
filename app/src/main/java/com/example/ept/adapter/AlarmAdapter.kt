@@ -11,12 +11,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ept.R
-import com.example.ept.model.AlarmDataModel
-import com.example.ept.model.SleepAlarmReceiver
+import com.example.ept.ObjectInfor.AlarmDataInfo
+import com.example.ept.Utils.SleepAlarmReceiver
 import com.google.android.material.switchmaterial.SwitchMaterial
 import java.util.Calendar
 
-class AlarmAdapter(private val alarmList: List<AlarmDataModel>) : RecyclerView.Adapter<AlarmAdapter.ViewHolder>() {
+class AlarmAdapter(private val alarmList: List<AlarmDataInfo>) : RecyclerView.Adapter<AlarmAdapter.ViewHolder>() {
 
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -75,7 +75,7 @@ class AlarmAdapter(private val alarmList: List<AlarmDataModel>) : RecyclerView.A
 
     }
 
-    private fun setAlarm(context: Context, alarmData: AlarmDataModel) {
+    private fun setAlarm(context: Context, alarmData: AlarmDataInfo) {
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(context, SleepAlarmReceiver::class.java)
         intent.action = "SLEEP"  // Đặt một action tùy chỉnh để phân biệt các intent

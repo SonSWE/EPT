@@ -11,9 +11,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ept.R
 import com.example.ept.WaterHistoryActivity
-import com.example.ept.model.Water
+import com.example.ept.ObjectInfor.WaterInfo
 
-class WaterAdapter(private val dataList: MutableList<Water>, private val context: Context)  :
+class WaterAdapter(private val dataList: MutableList<WaterInfo>, private val context: Context)  :
     RecyclerView.Adapter<WaterAdapter.ViewHolder>() {
 
 

@@ -1,7 +1,7 @@
 package com.example.ept.Utils
 
 import android.content.Context
-import com.example.ept.model.UserInfo
+import com.example.ept.ObjectInfor.UserInfo
 
 import com.google.gson.Gson
 
