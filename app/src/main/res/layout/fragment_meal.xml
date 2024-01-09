@@ -68,10 +68,8 @@
 
                 <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    tools:ignore="ContentDescription">
+                    android:layout_height="match_parent">
+
 
                     <ImageView
                         android:id="@+id/ivLessonThumbnail"

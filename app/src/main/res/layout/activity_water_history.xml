@@ -1,188 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_activity_parent"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@drawable/ic_app_bg"
+    android:orientation="vertical"
     tools:context=".WaterHistoryActivity">
 
-    <LinearLayout
+    <com.google.android.flexbox.FlexboxLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        app:alignItems="center"
+        app:flexDirection="column">
 
-        <LinearLayout
+
+        <com.google.android.flexbox.FlexboxLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="ExtraText">
+            android:padding="10dp"
+            app:alignItems="center"
+            app:flexDirection="row"
+            app:justifyContent="space_between">
+
+            <ImageView
+
+                android:id="@+id/myImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="26dp"
+                app:srcCompat="@drawable/baseline_arrow_back_24" />
+
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="130dp"
+                android:text="Lich sử uống nước"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+        </com.google.android.flexbox.FlexboxLayout>
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            app:alignItems="center"
+            app:flexDirection="row"
+            app:justifyContent="center">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true">
+                android:layout_height="match_parent">
 
-                <ImageView
+                <ProgressBar
+                    android:id="@+id/progress2"
+                    android:layout_width="400dp"
+                    android:layout_height="300dp"
+                    android:indeterminateOnly="false"
+                    android:max="2250"
+                    android:progress="0"
+                    android:progressDrawable="@drawable/progress_circle2" />
 
-                    android:id="@+id/myImageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingHorizontal="26dp"
-                    app:srcCompat="@drawable/baseline_arrow_back_24" />
-
-                <TextView
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:fontFamily="@font/family"
-                    android:text="Lịch sử uống nước"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"></TextView>
-
-                <ImageView
-
-                    android:id="@+id/imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:paddingHorizontal="26dp"
-                    app:srcCompat="@drawable/baseline_menu_24" />
-
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginTop="20dp">
-
-                <LinearLayout
+                <com.google.android.flexbox.FlexboxLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    >
-
-                    <ProgressBar
-                        android:layout_gravity="center"
-                        android:id="@+id/progress2"
-                        android:layout_width="400dp"
-                        android:layout_height="300dp"
-                        android:indeterminateOnly="false"
-                        android:progress="0"
-                        android:progressDrawable="@drawable/progress_circle2"
-                        android:max="2250">
-
-
-                    </ProgressBar>
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/textLayout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:orientation="vertical"
-
-                    >
+                    android:layout_marginTop="100dp"
+                    android:padding="10dp"
+                    app:alignItems="center"
+                    app:flexDirection="column"
+                    app:justifyContent="center">
 
                     <TextView
                         android:id="@+id/textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Mục tiêu hàng ngày"
-                        android:textStyle="bold"
-                        android:textSize="19dp"
                         android:textColor="@color/white"
-                        />
+                        android:textSize="19dp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/text_per"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:text="0/2250"
                         android:textColor="@color/white"
                         android:textSize="28sp"
                         android:textStyle="italic"
-                        android:gravity="center"
-
-
 
                         />
 
-                </LinearLayout>
 
+                </com.google.android.flexbox.FlexboxLayout>
 
 
             </RelativeLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <Button
-                    android:id="@+id/showTimeBtn"
-                    android:layout_width="130dp"
-                    android:layout_height="55dp"
-                    android:text="+250ml"
-                    android:textStyle="bold"
-                    android:textSize="20dp"
-                    android:backgroundTint="@color/white"
-                    android:textColor="@color/black"
-                    android:onClick="showTime"
-                    android:layout_marginTop="5dp"
-                    android:layout_centerHorizontal="true"
 
-                    />
+        </com.google.android.flexbox.FlexboxLayout>
 
-            </RelativeLayout>
+        <com.google.android.flexbox.FlexboxLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            app:alignItems="center"
+            app:flexDirection="row"
+            app:justifyContent="center">
 
-            <LinearLayout
-                android:id="@+id/timeContainer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_below="@id/showTimeBtn"
-                android:visibility="gone"
-                android:layout_marginBottom="20dp">
+            <Button
+                android:id="@+id/showTimeBtn"
+                android:layout_width="130dp"
+                android:layout_height="55dp"
+                android:backgroundTint="@color/white"
+                android:onClick="showTime"
+                android:text="+250ml"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold"
 
 
-
-            </LinearLayout>
-
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent">
-
-                </androidx.recyclerview.widget.RecyclerView>
+                />
 
 
+        </com.google.android.flexbox.FlexboxLayout>
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        app:alignItems="center"
+        app:flexDirection="row"
+        app:justifyContent="center">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+        </androidx.recyclerview.widget.RecyclerView>
 
 
-
-        </LinearLayout>
-
-    </LinearLayout>
+    </com.google.android.flexbox.FlexboxLayout>
 
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </com.google.android.flexbox.FlexboxLayout>
+
+
+
+</FrameLayout>
