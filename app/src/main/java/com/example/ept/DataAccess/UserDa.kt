@@ -1,12 +1,7 @@
 package com.example.ept.DataAccess
 
-import com.example.ept.model.UserInfo
-import com.google.android.gms.tasks.Tasks
-import com.google.android.gms.tasks.Task
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
+import com.example.ept.ObjectInfor.UserInfo
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.getValue
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.tasks.await

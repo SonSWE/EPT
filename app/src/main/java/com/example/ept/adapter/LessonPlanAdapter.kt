@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.example.ept.R
 import com.example.ept.DateWorkoutListActivity
 import com.example.ept.databinding.LessonPlanItemBinding
-import com.example.ept.model.LessonInfo
+import com.example.ept.ObjectInfor.LessonInfo
 
 
 class LessonPlanAdapter(private val colection: List<LessonInfo>) :

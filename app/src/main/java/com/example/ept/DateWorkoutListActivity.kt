@@ -9,9 +9,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.ept.adapter.DateAdapter
-import com.example.ept.model.DateInLessonInfo
-import com.example.ept.model.LessonInfo
-import com.example.ept.model.ResultInfo
+import com.example.ept.ObjectInfor.DateInLessonInfo
+import com.example.ept.ObjectInfor.LessonInfo
+import com.example.ept.ObjectInfor.ResultInfo
 import com.google.android.material.button.MaterialButton
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError

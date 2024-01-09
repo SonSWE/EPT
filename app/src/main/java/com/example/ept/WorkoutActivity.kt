@@ -8,14 +8,14 @@ import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
-import com.example.ept.model.ExerciseInfo
-import com.example.ept.model.ResultInfo
+import com.example.ept.DataAccess.ResultDA
+import com.example.ept.ObjectInfor.ExerciseInfo
+import com.example.ept.ObjectInfor.ResultInfo
 import com.google.firebase.database.FirebaseDatabase
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.FullscreenListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.options.IFramePlayerOptions
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.utils.loadOrCueVideo
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 
 class WorkoutActivity : AppCompatActivity() {
@@ -149,13 +149,7 @@ class WorkoutActivity : AppCompatActivity() {
             _result.user_Id = _user_Id
         }
 
-        val db = FirebaseDatabase.getInstance().reference.child("Workout").child("Result")
-
-        db.child(_result.code!!).setValue(_result).addOnSuccessListener {
-//                Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show()
-        }.addOnFailureListener {
-            Toast.makeText(this, "Có lỗi xảy ra", Toast.LENGTH_SHORT).show()
-        }
+        var _result = ResultDA().InsertOrUpdate(_result)
     }
 
     fun SuccessExercise() {

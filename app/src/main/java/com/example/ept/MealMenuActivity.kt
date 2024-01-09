@@ -14,39 +14,34 @@ import android.util.Log
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.ept.adapter.DetailMealAdapter
-import com.example.ept.adapter.MeaStorageAdapter
 import com.example.ept.adapter.MealMenuAdapter
 import com.example.ept.adapter.MealMenuLunchAdapter
 import com.example.ept.adapter.MealMenuNightAdapter
-import com.example.ept.model.AlarmReceiver
-import com.example.ept.model.Food
-import com.example.ept.model.MealLunchModel
-import com.example.ept.model.MealMorningModel
-import com.example.ept.model.MealNightModel
+import com.example.ept.Utils.AlarmReceiver
+import com.example.ept.ObjectInfor.MealLunchInfo
+import com.example.ept.ObjectInfor.MealMorningInfo
+import com.example.ept.ObjectInfor.MealNightInfo
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import java.util.Calendar
 import java.util.Locale
-import kotlin.math.log
 
 class MealMenuActivity : AppCompatActivity() {
 
 
 
     private var mMealMenuAdapter: MealMenuAdapter? = null
-    private var mListFoodMor: MutableList<MealMorningModel>? = mutableListOf()
+    private var mListFoodMor: MutableList<MealMorningInfo>? = mutableListOf()
 
     private var mMealMenuLunchAdapter: MealMenuLunchAdapter? = null
-    private var mListFoodLun: MutableList<MealLunchModel>? = mutableListOf()
+    private var mListFoodLun: MutableList<MealLunchInfo>? = mutableListOf()
 
     private var mMealMenuNightAdapter: MealMenuNightAdapter? = null
-    private var mListFoodNNight: MutableList<MealNightModel>? = mutableListOf()
+    private var mListFoodNNight: MutableList<MealNightInfo>? = mutableListOf()
 
     var notificationReceiver: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
@@ -171,7 +166,7 @@ class MealMenuActivity : AppCompatActivity() {
                         mListFoodMor!!.clear()
 
                         for (dataSnapshot in snapshot.children) {
-                            val foodMor = dataSnapshot.getValue(MealMorningModel::class.java)
+                            val foodMor = dataSnapshot.getValue(MealMorningInfo::class.java)
                             if (foodMor != null) {
                                 mListFoodMor!!.add(foodMor)
                             }
@@ -210,7 +205,7 @@ class MealMenuActivity : AppCompatActivity() {
                         mListFoodLun!!.clear()
 
                         for (dataSnapshot in snapshot.children) {
-                            val foodMor = dataSnapshot.getValue(MealLunchModel::class.java)
+                            val foodMor = dataSnapshot.getValue(MealLunchInfo::class.java)
                             if (foodMor != null) {
                                 mListFoodLun!!.add(foodMor)
                             }
@@ -249,7 +244,7 @@ class MealMenuActivity : AppCompatActivity() {
                         mListFoodNNight!!.clear()
 
                         for (dataSnapshot in snapshot.children) {
-                            val foodMor = dataSnapshot.getValue(MealNightModel::class.java)
+                            val foodMor = dataSnapshot.getValue(MealNightInfo::class.java)
                             if (foodMor != null) {
                                 mListFoodNNight!!.add(foodMor)
                             }

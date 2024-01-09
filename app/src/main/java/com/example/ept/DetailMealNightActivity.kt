@@ -10,13 +10,10 @@ import android.widget.Toast
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.ept.adapter.DetailMealAdapter
 import com.example.ept.adapter.DetailMealNightAdapter
-import com.example.ept.adapter.MeaStorageAdapter
 import com.example.ept.adapter.MeaStorageNightAdapter
-import com.example.ept.model.Food
-import com.example.ept.model.MealNightModel
-import com.example.ept.model.MealMorningModel
+import com.example.ept.ObjectInfor.FoodInfo
+import com.example.ept.ObjectInfor.MealNightInfo
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -28,8 +25,8 @@ class DetailMealNightActivity : AppCompatActivity() {
     private var recyclerViewFoodNightAdd: RecyclerView? = null
     private var mDetailMealNightAdapter: DetailMealNightAdapter? = null
     private var mMealStorageNightAdapter: MeaStorageNightAdapter? = null
-    private var mListFoodNight: MutableList<Food>? = null
-    private var mListStorageNight: MutableList<MealNightModel>? = null
+    private var mListFoodNight: MutableList<FoodInfo>? = null
+    private var mListStorageNight: MutableList<MealNightInfo>? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_meal_night)
@@ -102,7 +99,7 @@ class DetailMealNightActivity : AppCompatActivity() {
 
                     // Duyệt qua dữ liệu mới và thêm vào danh sách
                     for (dataSnapshot in snapshot.children) {
-                        val food = dataSnapshot.getValue(Food::class.java)
+                        val food = dataSnapshot.getValue(FoodInfo::class.java)
                         if (food != null) {
                             food.img_food = dataSnapshot.child("img_food").getValue(
                                 String::class.java
@@ -141,7 +138,7 @@ class DetailMealNightActivity : AppCompatActivity() {
 
                     // Duyệt qua dữ liệu mới và thêm vào danh sách
                     for (dataSnapshot in snapshot.children) {
-                        val foodStorage = dataSnapshot.getValue(MealNightModel::class.java)
+                        val foodStorage = dataSnapshot.getValue(MealNightInfo::class.java)
                         if (foodStorage != null) {
 //                            foodStorage.img_food = dataSnapshot.child("img_food").getValue(String::class.java) ?: ""
                             mListStorageNight!!.add(foodStorage)

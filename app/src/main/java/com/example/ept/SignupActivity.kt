@@ -7,14 +7,8 @@ import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import com.example.ept.DataAccess.UserDa
-import com.example.ept.model.UserInfo
+import com.example.ept.ObjectInfor.UserInfo
 import com.google.android.material.button.MaterialButton
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.getValue
-import kotlinx.coroutines.runBlocking
 
 class SignupActivity : AppCompatActivity() {
     lateinit var database: SQLiteDatabase

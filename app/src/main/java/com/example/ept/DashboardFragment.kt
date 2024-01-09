@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ept.adapter.LessonByMuscleAdapter
 import com.example.ept.adapter.LessonPlanAdapter
-import com.example.ept.model.LessonInfo
-import com.example.ept.model.UserLessonModel
+import com.example.ept.ObjectInfor.LessonInfo
+import com.example.ept.ObjectInfor.UserLessonInfo
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -72,9 +72,9 @@ class DashboardFragment : Fragment() {
         myRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 //thông tin bài tập của user đăng nhập
-                val lstUserLesson: ArrayList<UserLessonModel> = ArrayList<UserLessonModel>()
+                val lstUserLesson: ArrayList<UserLessonInfo> = ArrayList<UserLessonInfo>()
                 for (dataSnapshot in snapshot.child("User_Lesson").children) {
-                    val model = dataSnapshot.getValue<UserLessonModel>()
+                    val model = dataSnapshot.getValue<UserLessonInfo>()
                     if (model != null) {
                         lstUserLesson.add(model)
                     }

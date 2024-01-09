@@ -6,19 +6,17 @@ import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.ept.R
-import com.example.ept.model.MealMorningModel
+import com.example.ept.ObjectInfor.MealMorningInfo
 
 
 
-class MeaStorageAdapter(private val mListFoodMeal: List<MealMorningModel>?,
+class MeaStorageAdapter(private val mListFoodMeal: List<MealMorningInfo>?,
                         private val onDeleteClickListener: OnDeleteClickListener) :
     RecyclerView.Adapter<MeaStorageAdapter.MeaStorageHolder>() {
 
@@ -49,7 +47,7 @@ class MeaStorageAdapter(private val mListFoodMeal: List<MealMorningModel>?,
         private val deleteStorage: ImageView = itemView.findViewById(R.id.deleteStorage)
         private val idFood: TextView = itemView.findViewById(R.id.idFood)
 
-        fun bind(food: MealMorningModel) {
+        fun bind(food: MealMorningInfo) {
             idFood.text = food.id.toString()
             tvNameFoodStorage.text = food.name_food
             tvNumKcalStorage.text = food.totalKcal.toString()

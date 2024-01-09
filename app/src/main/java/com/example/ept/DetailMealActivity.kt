@@ -3,7 +3,6 @@ package com.example.ept
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.ImageView
@@ -14,8 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ept.adapter.DetailMealAdapter
 import com.example.ept.adapter.MeaStorageAdapter
-import com.example.ept.model.Food
-import com.example.ept.model.MealMorningModel
+import com.example.ept.ObjectInfor.FoodInfo
+import com.example.ept.ObjectInfor.MealMorningInfo
 
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.firebase.database.DataSnapshot
@@ -29,8 +28,8 @@ class DetailMealActivity : AppCompatActivity() {
     private var recyclerViewFoodAdd: RecyclerView? = null
     private var mDetailMealAdapter: DetailMealAdapter? = null
     private var mMealStorageAdapter: MeaStorageAdapter? = null
-    private var mListFood: MutableList<Food>? = null
-    private var mListStorage: MutableList<MealMorningModel>? = null
+    private var mListFood: MutableList<FoodInfo>? = null
+    private var mListStorage: MutableList<MealMorningInfo>? = null
 
     var name: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -105,7 +104,7 @@ class DetailMealActivity : AppCompatActivity() {
 
                     // Duyệt qua dữ liệu mới và thêm vào danh sách
                     for (dataSnapshot in snapshot.children) {
-                        val food = dataSnapshot.getValue(Food::class.java)
+                        val food = dataSnapshot.getValue(FoodInfo::class.java)
                         if (food != null) {
                             food.img_food = dataSnapshot.child("img_food").getValue(
                                 String::class.java
@@ -144,7 +143,7 @@ class DetailMealActivity : AppCompatActivity() {
 
                     // Duyệt qua dữ liệu mới và thêm vào danh sách
                     for (dataSnapshot in snapshot.children) {
-                        val foodStorage = dataSnapshot.getValue(MealMorningModel::class.java)
+                        val foodStorage = dataSnapshot.getValue(MealMorningInfo::class.java)
                         if (foodStorage != null) {
 //                            foodStorage.img_food = dataSnapshot.child("img_food").getValue(String::class.java) ?: ""
                             mListStorage!!.add(foodStorage)

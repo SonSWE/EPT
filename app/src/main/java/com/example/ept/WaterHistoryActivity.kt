@@ -10,14 +10,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ept.adapter.WaterAdapter
-import com.example.ept.model.Water
+import com.example.ept.ObjectInfor.WaterInfo
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
 class WaterHistoryActivity : AppCompatActivity() {
     private lateinit var waterAdapter: WaterAdapter
-    private val mDataList = mutableListOf<Water>()
+    private val mDataList = mutableListOf<WaterInfo>()
     private lateinit var progressBar: ProgressBar
     private lateinit var myImageView: ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,7 +34,7 @@ class WaterHistoryActivity : AppCompatActivity() {
         val addButton: Button = findViewById(R.id.showTimeBtn)
         addButton.setOnClickListener {
             val currentTime = SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date())
-            mDataList.add(Water("250", currentTime))
+            mDataList.add(WaterInfo("250", currentTime))
             waterAdapter.notifyItemInserted(mDataList.size - 1)
 
             // Cập nhật ProgressBar

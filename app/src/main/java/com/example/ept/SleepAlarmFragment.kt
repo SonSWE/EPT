@@ -1,12 +1,9 @@
 package com.example.ept
 
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -14,8 +11,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ept.adapter.AlarmAdapter
-import com.example.ept.databinding.FragmentSleepAlarmBinding
-import com.example.ept.model.AlarmDataModel
+import com.example.ept.ObjectInfor.AlarmDataInfo
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -32,7 +28,7 @@ class SleepAlarmFragment : Fragment() {
     private lateinit var rootView: View
     private lateinit var recyclerView: RecyclerView
     private lateinit var alarmAdapter: AlarmAdapter
-    private val alarmList = mutableListOf<AlarmDataModel>()
+    private val alarmList = mutableListOf<AlarmDataInfo>()
     private lateinit var timeTextView: TextView
     private lateinit var handler: Handler
     private lateinit var runnable: Runnable
@@ -119,7 +115,7 @@ class SleepAlarmFragment : Fragment() {
                 alarmList.clear()
 
                 for (snapshot in dataSnapshot.children) {
-                    val alarmData = snapshot.getValue(AlarmDataModel::class.java)
+                    val alarmData = snapshot.getValue(AlarmDataInfo::class.java)
                     alarmData?.let {
                         alarmList.add(it)
                     }

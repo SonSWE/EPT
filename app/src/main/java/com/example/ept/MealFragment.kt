@@ -3,7 +3,6 @@ package com.example.ept
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.app.TimePickerDialog
-import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
@@ -22,11 +21,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.ept.adapter.MealMenuAdapter
 import com.example.ept.adapter.MealMenuLunchAdapter
 import com.example.ept.adapter.MealMenuNightAdapter
-import com.example.ept.model.AlarmReceiver
+import com.example.ept.Utils.AlarmReceiver
 
-import com.example.ept.model.MealLunchModel
-import com.example.ept.model.MealMorningModel
-import com.example.ept.model.MealNightModel
+import com.example.ept.ObjectInfor.MealLunchInfo
+import com.example.ept.ObjectInfor.MealMorningInfo
+import com.example.ept.ObjectInfor.MealNightInfo
 import com.google.android.material.button.MaterialButton
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -40,13 +39,13 @@ class MealFragment : Fragment() {
 
     private lateinit var rootView: View
     private var mMealMenuAdapter: MealMenuAdapter? = null
-    private var mListFoodMor: MutableList<MealMorningModel>? = mutableListOf()
+    private var mListFoodMor: MutableList<MealMorningInfo>? = mutableListOf()
 
     private var mMealMenuLunchAdapter: MealMenuLunchAdapter? = null
-    private var mListFoodLun: MutableList<MealLunchModel>? = mutableListOf()
+    private var mListFoodLun: MutableList<MealLunchInfo>? = mutableListOf()
 
     private var mMealMenuNightAdapter: MealMenuNightAdapter? = null
-    private var mListFoodNNight: MutableList<MealNightModel>? = mutableListOf()
+    private var mListFoodNNight: MutableList<MealNightInfo>? = mutableListOf()
 
 //    private val notificationReceiver = object : BroadcastReceiver() {
 //        override fun onReceive(context: Context?, intent: Intent?) {
@@ -179,7 +178,7 @@ class MealFragment : Fragment() {
                     mListFoodMor?.clear()
 
                     for (dataSnapshot in snapshot.children) {
-                        val foodMor = dataSnapshot.getValue(MealMorningModel::class.java)
+                        val foodMor = dataSnapshot.getValue(MealMorningInfo::class.java)
                         if (foodMor != null) {
                             mListFoodMor?.add(foodMor)
                         }
@@ -213,7 +212,7 @@ class MealFragment : Fragment() {
                     mListFoodLun?.clear()
 
                     for (dataSnapshot in snapshot.children) {
-                        val foodLun = dataSnapshot.getValue(MealLunchModel::class.java)
+                        val foodLun = dataSnapshot.getValue(MealLunchInfo::class.java)
                         if (foodLun != null) {
                             mListFoodLun?.add(foodLun)
                         }
@@ -247,7 +246,7 @@ class MealFragment : Fragment() {
                     mListFoodNNight?.clear()
 
                     for (dataSnapshot in snapshot.children) {
-                        val foodNight = dataSnapshot.getValue(MealNightModel::class.java)
+                        val foodNight = dataSnapshot.getValue(MealNightInfo::class.java)
                         if (foodNight != null) {
                             mListFoodNNight?.add(foodNight)
                         }

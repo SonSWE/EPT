@@ -1,6 +1,5 @@
 package com.example.ept
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -9,8 +8,7 @@ import android.widget.ImageView
 import android.widget.TimePicker
 import android.widget.Toast
 import android.widget.ToggleButton
-import com.example.ept.model.AlarmDataModel
-import com.google.android.material.switchmaterial.SwitchMaterial
+import com.example.ept.ObjectInfor.AlarmDataInfo
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
@@ -65,7 +63,7 @@ class AddAlarmSleepActivity : AppCompatActivity() {
 
             // Tạo một đối tượng dữ liệu
             val isAM: Boolean = determineIsAM(hour)
-            val alarmData = AlarmDataModel(hour, minute, selectedDays, notificationText, isAM)
+            val alarmData = AlarmDataInfo(hour, minute, selectedDays, notificationText, isAM)
 
 
             // Đẩy dữ liệu lên Firebase

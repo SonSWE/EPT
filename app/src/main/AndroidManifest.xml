@@ -43,9 +43,6 @@
             android:name=".ExerciseListActivity"
             android:exported="false" />
         <activity
-            android:name=".HomeActivity"
-            android:exported="false" />
-        <activity
             android:name=".DetailMealNightActivity"
             android:exported="false" />
         <activity
@@ -70,8 +67,8 @@
             android:name=".MainActivity"
             android:exported="false"/>
 
-        <receiver android:name=".model.AlarmReceiver" />
-        <receiver android:name=".model.SleepAlarmReceiver" />
+        <receiver android:name=".Utils.AlarmReceiver" />
+        <receiver android:name=".Utils.SleepAlarmReceiver" />
     </application>
 
 </manifest>
