@@ -1,5 +1,6 @@
 package com.example.ept
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.ept.adapter.LessonByMuscleAdapter
 import com.example.ept.adapter.LessonPlanAdapter
 import com.example.ept.ObjectInfor.LessonInfo
+import com.example.ept.ObjectInfor.UserInfo
 import com.example.ept.ObjectInfor.UserLessonInfo
+import com.example.ept.Utils.UserShareReferentHelper
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -32,16 +35,17 @@ class DashboardFragment : Fragment() {
     private lateinit var _lstLessonByMucleDiff: MutableList<LessonInfo>
 
     private lateinit var rootView: View
+    private lateinit var activity: MainActivity
     private lateinit var database: DatabaseReference
-    private var _user_id: Int? = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         rootView = inflater.inflate(R.layout.fragment_dashboard, container, false)
+        activity = getActivity() as MainActivity
         database = FirebaseDatabase.getInstance().reference
-        _user_id = 1
+
 
         LoadData()
 
@@ -89,7 +93,7 @@ class DashboardFragment : Fragment() {
                     if (model != null) {
                         if (model.lesson_Type == 1) {
                             var i =
-                                lstUserLesson.indexOfFirst { x -> x.user_Id == _user_id && x.lesson_Id == model.lesson_Id }
+                                lstUserLesson.indexOfFirst { x -> x.user_Id == activity.userLogin.user_Id && x.lesson_Id == model.lesson_Id }
                                     ?: -1
                             if (i >= 0) {
                                 model.current_Date = lstUserLesson[i].current_Date

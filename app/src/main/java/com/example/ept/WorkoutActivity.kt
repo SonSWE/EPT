@@ -11,6 +11,8 @@ import androidx.fragment.app.Fragment
 import com.example.ept.DataAccess.ResultDA
 import com.example.ept.ObjectInfor.ExerciseInfo
 import com.example.ept.ObjectInfor.ResultInfo
+import com.example.ept.ObjectInfor.UserInfo
+import com.example.ept.Utils.UserShareReferentHelper
 import com.google.firebase.database.FirebaseDatabase
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
@@ -25,7 +27,6 @@ class WorkoutActivity : AppCompatActivity() {
     var _curentExerciseIndex: Int = 0
     var _lesson_Id: Int = 0
     var _lesson_Type: Int = 0
-    var _user_Id: Int = 1
 
     private lateinit var youTubePlayer: YouTubePlayer
 
@@ -41,9 +42,12 @@ class WorkoutActivity : AppCompatActivity() {
         }
     }
 
+    lateinit var userLogin: UserInfo
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_workout)
+
+        userLogin = UserShareReferentHelper().getUser(this)
 
         _lstExercise = intent.getSerializableExtra("exercise_list") as MutableList<ExerciseInfo>
         _curentExerciseIndex = intent.getIntExtra("curent_exercise_index", -1)
@@ -128,7 +132,7 @@ class WorkoutActivity : AppCompatActivity() {
 
     fun UpdateResult() {
         val code =
-            _lesson_Id.toString() + "-" + _user_Id.toString() + "-" + _lesson_Type.toString()
+            _lesson_Id.toString() + "-" + userLogin.user_Id.toString() + "-" + _lesson_Type.toString()
 
         if (_curentExerciseIndex + 1 == _lstExercise.size) {
             _result.current_Date = _result.current_Date?.plus(1)
@@ -146,7 +150,7 @@ class WorkoutActivity : AppCompatActivity() {
             _result.current_Exercise_Id = Curent_Exercise.exercise_Id
             _result.status = 1
             _result.lesson_Id = _lesson_Id
-            _result.user_Id = _user_Id
+            _result.user_Id = userLogin.user_Id
         }
 
         var _result = ResultDA().InsertOrUpdate(_result)

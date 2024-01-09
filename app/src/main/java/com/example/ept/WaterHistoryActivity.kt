@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ept.adapter.WaterAdapter
 import com.example.ept.ObjectInfor.WaterInfo
+import com.google.android.material.button.MaterialButton
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -31,7 +32,7 @@ class WaterHistoryActivity : AppCompatActivity() {
         waterAdapter = WaterAdapter(mDataList, this)
         mRecyclerView.adapter = waterAdapter
 
-        val addButton: Button = findViewById(R.id.showTimeBtn)
+        val addButton: MaterialButton = findViewById(R.id.showTimeBtn)
         addButton.setOnClickListener {
             val currentTime = SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date())
             mDataList.add(WaterInfo("250", currentTime))

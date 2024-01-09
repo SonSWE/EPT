@@ -12,6 +12,8 @@ import com.example.ept.adapter.DateAdapter
 import com.example.ept.ObjectInfor.DateInLessonInfo
 import com.example.ept.ObjectInfor.LessonInfo
 import com.example.ept.ObjectInfor.ResultInfo
+import com.example.ept.ObjectInfor.UserInfo
+import com.example.ept.Utils.UserShareReferentHelper
 import com.google.android.material.button.MaterialButton
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -30,11 +32,12 @@ class DateWorkoutListActivity : AppCompatActivity() {
     lateinit var lesson: LessonInfo
     var CurrentDatelesson = LessonInfo()
 
-    var _user_id: Int? = 0
+    lateinit var userLogin: UserInfo
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_date_workout_list)
+        userLogin = UserShareReferentHelper().getUser(this)
 
         database = FirebaseDatabase.getInstance().reference
         lesson = intent.getSerializableExtra("lesson") as LessonInfo
@@ -73,7 +76,7 @@ class DateWorkoutListActivity : AppCompatActivity() {
                 //kết quả bài tập
                 for (dataSnapshot in snapshot.child("Result").children) {
                     val model = dataSnapshot.getValue<ResultInfo>()
-                    if (model != null && model.lesson_Id == lesson.lesson_Id && model.user_Id == 1) {
+                    if (model != null && model.lesson_Id == lesson.lesson_Id && model.user_Id == userLogin.user_Id) {
                         _result = model
                     }
                 }

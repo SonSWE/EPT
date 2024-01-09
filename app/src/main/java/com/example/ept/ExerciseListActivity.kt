@@ -17,6 +17,8 @@ import com.example.ept.ObjectInfor.ExerciseLessonInfo
 import com.example.ept.ObjectInfor.ExerciseInfo
 import com.example.ept.ObjectInfor.LessonInfo
 import com.example.ept.ObjectInfor.ResultInfo
+import com.example.ept.ObjectInfor.UserInfo
+import com.example.ept.Utils.UserShareReferentHelper
 import com.google.android.flexbox.FlexboxLayout
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.button.MaterialButton
@@ -45,7 +47,7 @@ class ExerciseListActivity : AppCompatActivity() {
 
     lateinit var lesson: LessonInfo
 
-    var _user_id: Int? = 0
+    lateinit var userLogin: UserInfo
 
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<*>
     lateinit var youTubePlayerView: YouTubePlayerView
@@ -72,7 +74,7 @@ class ExerciseListActivity : AppCompatActivity() {
         setContentView(R.layout.activity_exercise_list)
         try {
             database = FirebaseDatabase.getInstance().reference
-            _user_id = 1
+            userLogin = UserShareReferentHelper().getUser(this)
 
             lesson = intent.getSerializableExtra("lesson") as LessonInfo
 
@@ -162,9 +164,9 @@ class ExerciseListActivity : AppCompatActivity() {
                     this@ExerciseListActivity.youTubePlayer = youTubePlayer
                 }
             }, iFramePlayerOptions)
-
-            //</editor-fold>
             lifecycle.addObserver(youTubePlayerView)
+            //</editor-fold>
+
         } catch (e: Exception) {
             println(e.message)
         }
